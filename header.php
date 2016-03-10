@@ -15,13 +15,13 @@
                     <button class="prev-nav-button"><?php esc_html_e( 'Previous', 'wardrobe' ); ?></button>
                     <button class="next-nav-button"><?php esc_html_e( 'Next', 'wardrobe' ); ?></button>
                 </div>
-                <nav id="site-navigation" class="main-navigation" role="navigation">
-                    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wardrobe' ); ?></button>
-                    <?php wp_nav_menu( array(
-                            'theme_location' => 'primary',
-                            'menu_class'     => 'primary-menu'
-                          ) );
-                    ?>
-                </nav>
+            <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+                <div class="sidebar-wrapper">
+                    <button class="sidebar-toggle" aria-controls="secondary" aria-expanded="false"><?php esc_html_e( 'Sidebar', 'wardrobe' ); ?></button>
+                    <aside id="secondary" class="sidebar widget-area" role="complementary">
+                        <?php dynamic_sidebar( 'sidebar-1' ); ?>
+                    </aside>
+                </div>
+            <?php endif; ?>
             </header>
             <div id="content" class="site-content">
