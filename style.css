@@ -116,3 +116,12 @@ Tags:
         padding-bottom: 20%;
     }
 }
+
+
+/* 2.3 Sidebar */
+#secondary {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    display: none; /* Hidden by default */
+}

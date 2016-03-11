@@ -17,7 +17,7 @@
                 </div>
             <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
                 <div class="sidebar-wrapper">
-                    <button class="sidebar-toggle" aria-controls="secondary" aria-expanded="false"><?php esc_html_e( 'Sidebar', 'wardrobe' ); ?></button>
+                    <button id="sidebar-toggle" aria-controls="secondary" aria-expanded="false"><?php esc_html_e( 'Sidebar', 'wardrobe' ); ?></button>
                     <aside id="secondary" class="sidebar widget-area" role="complementary">
                         <?php dynamic_sidebar( 'sidebar-1' ); ?>
                     </aside>
