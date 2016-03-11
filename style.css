@@ -1,0 +1,118 @@
+/*
+Theme Name: wardrobe
+Theme URI: https://github.com/wcerfgba/wardrobe
+Author: John Preston
+Author URI: https://github.com/wcerfgba
+Description: A WordPress theme for your clothes.
+Version: 0.0.1
+Text Domain: wardrobe
+Tags:
+
+*/
+
+
+/* 1. Resets */
+* {
+    margin: 0;
+	box-sizing: border-box;
+}
+
+
+/* 2. Layout */
+
+/* 2.1. Masthead */
+#masthead {
+    padding: 2px 5px;
+    width: 100%;
+}
+
+#masthead .site-title {
+	display: inline-block;
+}
+
+#masthead div {
+    float: right;
+}
+
+#masthead:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+
+/* 2.2 Categorised post grid */
+.category {
+    margin-bottom: 20px;
+}
+
+.category:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.post {
+    float: left;
+    width: 100%;
+    padding-bottom: 100%;
+    min-height: 6em;
+    position: relative;
+}
+
+.post-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 320px) {
+}
+
+@media (min-width: 321px) and (max-width: 480px) {
+    .post {
+        width: 50%;
+        padding-bottom: 50%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+    .post {
+        width: 33.333%;
+        padding-bottom: 33.333%;
+    }
+}
+
+@media (min-width: 641px) {
+    .category-name-div {
+        float: left;
+        width: 240px;
+        height: 100%;
+    }
+
+    .category-content-div {
+        margin-left: 240px;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 800px) {
+    .post {
+        width: 33.333%;
+        padding-bottom: 33.333%;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 960px) {
+    .post {
+        width: 25%;
+        padding-bottom: 25%;
+    }
+}
+
+@media (min-width: 961px) {
+    .post {
+        width: 20%;
+        padding-bottom: 20%;
+    }
+}
