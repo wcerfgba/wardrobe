@@ -1,7 +1,10 @@
 var $ = window.jQuery;
+var SVGInjector = window.SVGInjector;
+
 
 document.addEventListener("DOMContentLoaded", function () {
     registerSidebarToggle();
+    injectIcons();
 });
 
 
@@ -12,4 +15,8 @@ function registerSidebarToggle() {
     button.click(function () {
         sidebar.fadeToggle();
     });
+}
+
+function injectIcons() {
+    SVGInjector(document.querySelectorAll(".iconic-sprite"));
 }

@@ -9,7 +9,15 @@ Text Domain: wardrobe
 Tags:
 
 */
+/* Contents
 
+1. Resets
+2. Layout
+2.1 Masthead
+2.2 Categorised post grid
+2.3 Sidebar
+3. Button icons
+*/
 
 /* 1. Resets */
 * {
@@ -28,10 +36,6 @@ Tags:
 
 #masthead .site-title {
 	display: inline-block;
-}
-
-#masthead div {
-    float: right;
 }
 
 #masthead:after {
@@ -124,4 +128,43 @@ Tags:
     right: 0;
     z-index: 1;
     display: none; /* Hidden by default */
+}
+
+
+/* 3. Button icons */
+button {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.icon-use {
+    fill: #000;
+}
+
+.button-text {
+    display: none;
+}
+
+
+
+
+
+
+
+/* END. Utility classes */
+.float-right {
+    float: right;
+}
+
+.inline-block {
+    display: inline-block;
 }
