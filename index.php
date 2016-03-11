@@ -19,6 +19,7 @@
                     </div>
                 <?php endwhile; ?>
                 </div>
+            </div>
         <?php endforeach; ?>
     </main>
 </div>
