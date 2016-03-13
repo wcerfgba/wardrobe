@@ -13,39 +13,41 @@
             <header id="masthead" class="site-header" role="banner">
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                 <div class="float-right">
-                <div class="prev-next-nav inline-block">
-                    <button class="prev-nav-button">
-                        <svg viewBox="0 0 8 8" class="icon">
-                            <use xlink:href="#chevron-left" class="icon-use icon-prev-nav"></use>
-                        </svg>
-                        <span class="button-text text-prev-nav">
-                            <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
-                        </span>
-                    </button>
-                    <button class="next-nav-button">
-                        <svg viewBox="0 0 8 8" class="icon">
-                            <use xlink:href="#chevron-right" class="icon-use icon-next-nav"></use>
-                        </svg>
-                        <span class="button-text text-next-nav">
-                            <?php esc_html_e( 'Next', 'wardrobe' ); ?>
-                        </span>
-                    </button>
-                </div>
-            <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-                <div class="sidebar-wrapper inline-block">
-                    <button id="sidebar-toggle" aria-controls="secondary" aria-expanded="false">
-                        <svg viewBox="0 0 8 8" class="icon">
-                            <use xlink:href="#menu" class="icon-use icon-menu"></use>
-                        </svg>
-                        <span class="button-text text-menu">
-                            <?php esc_html_e( 'Menu', 'wardrobe' ); ?>
-                        </span>
-                    </button>
-                    <aside id="secondary" class="sidebar widget-area" role="complementary">
-                        <?php dynamic_sidebar( 'sidebar-1' ); ?>
-                    </aside>
-                </div>
-            <?php endif; ?>
+                    <div class="prev-next-nav inline-block">
+                        <button class="prev-nav-button">
+                            <svg viewBox="0 0 8 8" class="icon">
+                                <use xlink:href="#chevron-left" class="icon-use icon-prev-nav"></use>
+                            </svg>
+                            <span class="button-text text-prev-nav">
+                                <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
+                            </span>
+                        </button>
+                        <button class="next-nav-button">
+                            <svg viewBox="0 0 8 8" class="icon">
+                                <use xlink:href="#chevron-right" class="icon-use icon-next-nav"></use>
+                            </svg>
+                            <span class="button-text text-next-nav">
+                                <?php esc_html_e( 'Next', 'wardrobe' ); ?>
+                            </span>
+                        </button>
+                    </div>
+                <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+                    <div class="sidebar-button-wrapper inline-block">
+                        <button id="sidebar-toggle" aria-controls="secondary" aria-expanded="false">
+                            <svg viewBox="0 0 8 8" class="icon">
+                                <use xlink:href="#menu" class="icon-use icon-menu"></use>
+                            </svg>
+                            <span class="button-text text-menu">
+                                <?php esc_html_e( 'Menu', 'wardrobe' ); ?>
+                            </span>
+                        </button>
+                    </div>
+                <?php endif; ?>
                 </div>
             </header>
+        <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+            <aside id="secondary" class="sidebar widget-area" role="complementary">
+                <?php dynamic_sidebar( 'sidebar-1' ); ?>
+            </aside>
+        <?php endif; ?>
             <div id="content" class="site-content">
