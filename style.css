@@ -99,7 +99,7 @@ body {
     background: #000;
 }
 
-.post {
+.grid-post {
     float: left;
     width: 100%;
     padding-bottom: 100%;
@@ -125,7 +125,7 @@ body {
     color: rgba(255, 255, 255, 1);
 }
 
-.entry-title {
+h2.entry-title {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -152,14 +152,14 @@ body {
 }
 
 @media (min-width: 321px) and (max-width: 480px) {
-    .post {
+    .grid-post {
         width: 49%;
         padding-bottom: 50%;
     }
 }
 
 @media (min-width: 481px) and (max-width: 640px) {
-    .post {
+    .grid-post {
         width: 32.666%;
         padding-bottom: 33.333%;
     }
@@ -182,21 +182,21 @@ body {
 }
 
 @media (min-width: 641px) and (max-width: 800px) {
-    .post {
+    .grid-post {
         width: 32.666%;
         padding-bottom: 33.333%;
     }
 }
 
 @media (min-width: 801px) and (max-width: 960px) {
-    .post {
+    .grid-post {
         width: 24.5%;
         padding-bottom: 25%;
     }
 }
 
 @media (min-width: 961px) {
-    .post {
+    .grid-post {
         width: 19.6%;
         padding-bottom: 20%;
     }
@@ -229,6 +229,44 @@ body {
 @media (max-width: 480px) {
     #secondary {
         width: 100%;
+    }
+}
+
+
+/* 2.4 Single post */
+.single-post {
+    width: 100%;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #eee;
+    color: #000;
+}
+
+.entry-header {
+    width: 100%;
+}
+
+h1.entry-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.entry-meta {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.entry-content {
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .single-post {
+        width: 480px;
     }
 }
 
