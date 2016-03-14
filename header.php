@@ -10,7 +10,11 @@
     <body>
         <img src="<?php echo esc_url( get_template_directory_uri() . '/icons.svg' ); ?>" class="iconic-sprite" style="display: none;" />
        <div id="page" class="site">
+        <?php if ( is_admin_bar_showing() ) : ?>
+            <header id="masthead" class="site-header shift-masthead" role="banner">
+        <?php else : ?>
             <header id="masthead" class="site-header" role="banner">
+        <?php endif; ?>
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                 <div class="float-right">
                     <div class="prev-next-nav inline-block">

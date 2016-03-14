@@ -15,4 +15,6 @@ function wardrobe_widgets_init() {
 add_action( 'wp_enqueue_scripts', 'wardrobe_enqueue_scripts' );
 add_action( 'widgets_init', 'wardrobe_widgets_init' );
 
+add_theme_support( 'post-thumbnails' );
+
 ?>
