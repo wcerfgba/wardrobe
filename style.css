@@ -47,7 +47,6 @@ body {
     padding: 2px 5px;
     width: 100%;
     background: #000;
-    border-bottom: 1px solid #444;
 }
 
 .shift-masthead {
@@ -74,24 +73,32 @@ body {
 
 
 /* 2.2 Categorised post grid */
-#content {
+#primary {
     margin-top: 37px; /* masthead */
+    width: 100%;
 }
 
 .category {
-    border-bottom: 1px solid #222;
-    border-top: 1px solid #222;
+    margin-bottom: 5px;
+    background: #111;
 }
 
 .category-name-div {
-    text-align: center;
-    background: #000;
-    height: 80px;
-    border-bottom: 1px solid #222;
+    background: #222;
+    margin-top: 1px; /* .grid-post border */
+    position: relative;
+    width: 100%;
+    height: 66.666px;
 }
 
 .category-name {
-    line-height: 80px;
+    font-variant: small-caps;
+    font-weight: normal;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
 }
 
 .category-content-div {
@@ -105,10 +112,9 @@ body {
     padding-bottom: 100%;
     position: relative;
     border: 1px solid #222;
-    margin: 1px;
 }
 
-.post-title {
+.grid-post-title {
     position: absolute;
     top: 0;
     left: 0;
@@ -120,12 +126,18 @@ body {
     color: rgba(255, 255, 255, 0);
 }
 
-.post-title:hover {
+.grid-post-title:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 1);
+}
+
+.active-post-title {
     background: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 1);
 }
 
 h2.entry-title {
+    font-weight: normal;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -137,7 +149,7 @@ h2.entry-title {
     -ms-user-select: none;
 }
 
-.post-thumbnail {
+.grid-post-thumbnail {
     position: absolute;
     height: 100%;
 }
@@ -148,56 +160,51 @@ h2.entry-title {
     height: 100%;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 399px) {
 }
 
-@media (min-width: 321px) and (max-width: 480px) {
+@media (min-width: 400px) and (max-width: 599px) {
     .grid-post {
-        width: 49%;
+        width: 50%;
         padding-bottom: 50%;
     }
 }
 
-@media (min-width: 481px) and (max-width: 640px) {
+@media (min-width: 600px) and (max-width: 799px) {
     .grid-post {
-        width: 32.666%;
+        width: 33.333%;
         padding-bottom: 33.333%;
     }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 800px) {
     .category-name-div {
-        float: left;
-        width: 240px;
-        height: 120px;
-    }
-
-    .category-name {
-        line-height: 120px;
+        position: absolute;
+        width: 200px;
     }
 
     .category-content-div {
-        margin-left: 240px;
+        margin-left: 200px;
     }
 }
 
-@media (min-width: 641px) and (max-width: 800px) {
+@media (min-width: 800px) and (max-width: 999px) {
     .grid-post {
-        width: 32.666%;
+        width: 33.333%;
         padding-bottom: 33.333%;
     }
 }
 
-@media (min-width: 801px) and (max-width: 960px) {
+@media (min-width: 1000px) and (max-width: 1199px) {
     .grid-post {
-        width: 24.5%;
+        width: 25%;
         padding-bottom: 25%;
     }
 }
 
-@media (min-width: 961px) {
+@media (min-width: 1200px) {
     .grid-post {
-        width: 19.6%;
+        width: 20%;
         padding-bottom: 20%;
     }
 }
@@ -234,20 +241,33 @@ h2.entry-title {
 
 
 /* 2.4 Single post */
-.single-post {
-    width: 100%;
-    padding: 5px;
+.single-post-div {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    max-width: 480px;
+    width: 100%;
+}
+
+.single-post {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 5px;
     background: #eee;
     color: #000;
 }
 
 .entry-header {
     width: 100%;
+}
+
+.single-post-thumbnail {
+    margin-top: -5px;     /* Cancel padding at edges. */
+    margin-left: -5px;
+    margin-right: -5px;
 }
 
 h1.entry-title {
@@ -264,10 +284,26 @@ h1.entry-title {
     width: 100%;
 }
 
-@media (min-width: 480px) {
-    .single-post {
-        width: 480px;
-    }
+
+/* 2.5 Sidepage */
+#sidepage {
+    position: absolute;
+    top: 1px; /* Align with grid-post images. */
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    height: 100%;
+    border-top: 1px solid #222;
+}
+
+.sidepage-bar {
+    width: 100%;
+    height: 32px;
+    background: #000;
+}
+
+.prev-next-nav {
+    float: right;
 }
 
 
@@ -308,4 +344,8 @@ button {
 
 .inline-block {
     display: inline-block;
+}
+
+.display-none {
+    display: none;
 }
