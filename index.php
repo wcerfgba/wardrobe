@@ -9,11 +9,11 @@
                 <div id="category-<?php echo $cat->cat_ID; ?>-content-div" class="category-content-div">
                 <?php $cat_query = new WP_Query( "cat=$cat->cat_ID" );
                 while ( $cat_query->have_posts() ) : $cat_query->the_post(); ?>
-                    <div id="post-<?php the_ID(); ?>" <?php post_class( 'grid-post' ); ?>>
-                        <div id="post-<?php the_ID(); ?>-thumbnail" class="post-thumbnail">
+                    <div id="grid-post-<?php the_ID(); ?>" <?php post_class( 'grid-post' ); ?>>
+                        <div id="grid-post-<?php the_ID(); ?>-thumbnail" class="grid-post-thumbnail">
                             <?php the_post_thumbnail(); ?>
                         </div>
-                        <div id="post-<?php the_ID(); ?>-title" class="post-title">
+                        <div id="grid-post-<?php the_ID(); ?>-title" class="grid-post-title">
                             <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
                         </div>
                     </div>
