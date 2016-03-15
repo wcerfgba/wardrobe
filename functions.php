@@ -12,8 +12,15 @@ function wardrobe_widgets_init() {
     register_sidebar();
 }
 
+function wardrobe_query_vars( $vars ) {
+    $vars[] = "sidepage";
+    return $vars;
+}
+
 add_action( 'wp_enqueue_scripts', 'wardrobe_enqueue_scripts' );
 add_action( 'widgets_init', 'wardrobe_widgets_init' );
+
+add_filter( 'query_vars', 'wardrobe_query_vars' );
 
 add_theme_support( 'post-thumbnails' );
 
