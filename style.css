@@ -291,7 +291,7 @@ h1.entry-title {
     top: 1px; /* Align with grid-post images. */
     right: 0;
     bottom: 0;
-    width: 40%;
+    width: 0%; /* Collapsed by default. */
     height: 100%;
     border-top: 1px solid #222;
 }

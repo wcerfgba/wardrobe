@@ -5,8 +5,8 @@
             <div class="single-post-div">
 <?php else : ?>
     <div class="sidepage-bar">
-        <div class="close-sidepage-div inline-block">
-            <button class="close-sidepage-button">
+        <div class="sidepage-close-div inline-block">
+            <button id="sidepage-close-button">
                 <svg viewBox="0 0 8 8" class="icon">
                     <use xlink:href="#x" class="icon-use icon-close-sidepage"></use>
                 </svg>
@@ -16,7 +16,7 @@
             </button>
         </div>
         <div class="prev-next-nav inline-block">
-            <button class="prev-nav-button">
+            <button id="sidepage-prev-button">
                 <svg viewBox="0 0 8 8" class="icon">
                     <use xlink:href="#chevron-left" class="icon-use icon-prev-nav"></use>
                 </svg>
@@ -24,7 +24,7 @@
                     <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
                 </span>
             </button>
-            <button class="next-nav-button">
+            <button id="sidepage-next-button">
                 <svg viewBox="0 0 8 8" class="icon">
                     <use xlink:href="#chevron-right" class="icon-use icon-next-nav"></use>
                 </svg>
