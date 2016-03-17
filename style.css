@@ -27,7 +27,7 @@ Tags:
 
 body {
     background: #000;
-    color: #fff;
+    color: #eee;
     font-family: "Open Sans", sans-serif;
 }
 
@@ -36,6 +36,18 @@ body {
     min-height: 100vh;
 }
 
+input, textarea {
+    border: 1px solid #222;
+    background: #eee;
+}
+
+p {
+    margin: 5px 0px;
+}
+
+.screen-reader-text {
+    display: none;
+}
 
 /* 2. Layout */
 
@@ -242,11 +254,7 @@ h2.entry-title {
 
 /* 2.4 Single post */
 .single-post-div {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto;
     max-width: 480px;
     width: 100%;
 }
@@ -276,6 +284,7 @@ h1.entry-title {
 }
 
 .entry-meta {
+    font-variant: small-caps;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -304,6 +313,46 @@ h1.entry-title {
 
 .prev-next-nav {
     float: right;
+}
+
+
+/* 2.6 Comments */
+.comments-area {
+    margin-top: 20px;
+    padding: 5px;
+    font-size: small;
+}
+
+.comment-form-comment label {
+    float: left;
+}
+
+.comment-form-author label {
+    float: left;
+}
+
+.comment-form-email label {
+    float: left;
+}
+
+.comment-form-url label {
+    float: left;
+}
+
+.comment-form-comment textarea {
+    width: 100%;
+}
+
+.comment-form-author input {
+    width: 100%;
+}
+
+.comment-form-email input {
+    width: 100%;
+}
+
+.comment-form-url input {
+    width: 100%;
 }
 
 
