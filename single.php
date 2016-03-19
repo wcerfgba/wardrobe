@@ -39,7 +39,7 @@
                 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post' ); ?>>
                     <header class="entry-header">
                         <div id="single-post-<?php the_ID(); ?>-thumbnail" class="single-post-thumbnail">
-                            <?php the_post_thumbnail(); ?>
+                            <?php the_post_thumbnail( 'full' ); ?>
                         </div>
                         <div id="single-post-<?php the_ID(); ?>-title" class="single-post-title">
                             <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>

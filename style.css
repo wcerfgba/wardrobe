@@ -29,6 +29,7 @@ body {
     background: #000;
     color: #eee;
     font-family: "Open Sans", sans-serif;
+    font-size: 16px;
 }
 
 #page {
@@ -42,11 +43,18 @@ input, textarea {
 }
 
 p {
-    margin: 5px 0px;
+    margin: 0.5rem 0;
+    text-align: justify;
 }
 
 .screen-reader-text {
     display: none;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 /* 2. Layout */
@@ -56,7 +64,7 @@ p {
     position: fixed;
     top: 0;
     z-index: 2;
-    padding: 2px 5px;
+    padding: 0.125rem 0.5rem;
     width: 100%;
     background: #000;
 }
@@ -67,8 +75,8 @@ p {
 
 .site-title {
 	display: inline-block;
-    font-size: 16px;
-    line-height: 32px;
+    font-size: 1rem;
+    line-height: 2rem;
 }
 
 .site-title a, .site-title a:link, .site-title a:visited, .site-title a:hover, 
@@ -86,12 +94,12 @@ p {
 
 /* 2.2 Categorised post grid */
 #primary {
-    margin-top: 37px; /* masthead */
+    margin-top: 2.5rem; /* masthead */
     width: 100%;
 }
 
 .category {
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
     background: #111;
 }
 
@@ -100,7 +108,7 @@ p {
     margin-top: 1px; /* .grid-post border */
     position: relative;
     width: 100%;
-    height: 66.666px;
+    height: 4rem;
 }
 
 .category-name {
@@ -136,6 +144,7 @@ p {
     transition: color 0.2s ease;
     background: rgba(0, 0, 0, 0);
     color: rgba(255, 255, 255, 0);
+    overflow: hidden;
 }
 
 .grid-post-title:hover {
@@ -164,9 +173,10 @@ h2.entry-title {
 .grid-post-thumbnail {
     position: absolute;
     height: 100%;
+    width: 100%;
 }
 
-.attachment-post-thumbnail {
+.wp-post-image {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -192,11 +202,11 @@ h2.entry-title {
 @media (min-width: 800px) {
     .category-name-div {
         position: absolute;
-        width: 200px;
+        width: 12.5rem;
     }
 
     .category-content-div {
-        margin-left: 200px;
+        margin-left: 12.5rem;
     }
 }
 
@@ -236,7 +246,7 @@ h2.entry-title {
 
 #secondary > li {
     display: block;
-    margin: 10px;
+    margin: 0.666rem;
 }
 
 #secondary a, #secondary a:link, #secondary a:visited, #secondary a:hover, 
@@ -245,7 +255,7 @@ h2.entry-title {
     text-decoration: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
     #secondary {
         width: 100%;
     }
@@ -255,7 +265,7 @@ h2.entry-title {
 /* 2.4 Single post */
 .single-post-div {
     margin: 0 auto;
-    max-width: 480px;
+    max-width: 30rem;
     width: 100%;
 }
 
@@ -263,7 +273,7 @@ h2.entry-title {
     width: 100%;
     min-height: 100%;
     margin: 0 auto;
-    padding: 5px;
+    padding: 0.5rem;
     background: #eee;
     color: #000;
 }
@@ -273,20 +283,21 @@ h2.entry-title {
 }
 
 .single-post-thumbnail {
-    margin-top: -5px;     /* Cancel padding at edges. */
-    margin-left: -5px;
-    margin-right: -5px;
+    margin-top: -0.5rem;     /* Cancel padding at edges. */
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    margin-bottom: 0.666rem;
 }
 
 h1.entry-title {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 0.666rem;
 }
 
 .entry-meta {
     font-variant: small-caps;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 0.666rem;
 }
 
 .entry-content {
@@ -307,7 +318,7 @@ h1.entry-title {
 
 .sidepage-bar {
     width: 100%;
-    height: 32px;
+    height: 2rem;
     background: #000;
 }
 
@@ -318,9 +329,9 @@ h1.entry-title {
 
 /* 2.6 Comments */
 .comments-area {
-    margin-top: 20px;
-    padding: 5px;
-    font-size: small;
+    margin-top: 1.333rem;
+    padding: 0.333rem;
+    font-size: 0.75rem;
 }
 
 .comment-form-comment label {
@@ -355,6 +366,19 @@ h1.entry-title {
     width: 100%;
 }
 
+.comment-list {
+    list-style-type: none;
+    padding: 0 3rem;
+}
+
+.comments-title {
+    margin-bottom: 0.5rem;
+}
+
+.comment {
+    margin-bottom: 2rem;
+}
+
 
 /* 3. Button icons */
 button {
@@ -362,14 +386,14 @@ button {
     margin: 0;
     padding: 0;
     border: none;
-    width: 32px;
-    height: 32px;
-    line-height: 16px;
+    width: 2rem;
+    height: 2rem;
+    line-height: 1rem;
 }
 
 .icon {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
 }
 
 .icon-use {
