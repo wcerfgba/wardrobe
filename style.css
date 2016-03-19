@@ -57,6 +57,12 @@ a, a:link, a:visited, a:hover, a:active {
     font-weight: bold;
 }
 
+blockquote {
+    margin-left: 1rem;
+    border-left: 2px solid #bbb;
+    padding-left: 1rem;
+}
+
 /* 2. Layout */
 
 /* 2.1. Masthead */
@@ -265,7 +271,7 @@ h2.entry-title {
 /* 2.4 Single post */
 .single-post-div {
     margin: 0 auto;
-    max-width: 30rem;
+    max-width: 36rem;
     width: 100%;
 }
 
@@ -273,7 +279,7 @@ h2.entry-title {
     width: 100%;
     min-height: 100%;
     margin: 0 auto;
-    padding: 0.5rem;
+    padding: 1rem 3rem;
     background: #eee;
     color: #000;
 }
@@ -283,9 +289,9 @@ h2.entry-title {
 }
 
 .single-post-thumbnail {
-    margin-top: -0.5rem;     /* Cancel padding at edges. */
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
+    margin-top: -1rem;     /* Cancel padding at edges. */
+    margin-left: -3rem;
+    margin-right: -3rem;
     margin-bottom: 0.666rem;
 }
 
@@ -368,7 +374,7 @@ h1.entry-title {
 
 .comment-list {
     list-style-type: none;
-    padding: 0 3rem;
+    padding: 0 1rem;
 }
 
 .comments-title {
