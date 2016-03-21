@@ -54,7 +54,6 @@ p {
 a, a:link, a:visited, a:hover, a:active {
     color: #222;
     text-decoration: none;
-    font-weight: bold;
 }
 
 blockquote {
@@ -100,7 +99,7 @@ blockquote {
 
 /* 2.2 Categorised post grid */
 #primary {
-    margin-top: 2.5rem; /* masthead */
+    margin-top: 2.25rem; /* masthead */
     display: inline-block;
     vertical-align: top;
     width: 100%;
@@ -241,11 +240,10 @@ h2.entry-title {
 
 
 /* 2.3 Sidebar */
-
 #secondary {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 2.25rem; /* masthead */
     min-height: 100%;
     z-index: 1;
     display: none; /* Hidden by default */
@@ -259,7 +257,7 @@ h2.entry-title {
 
 #secondary a, #secondary a:link, #secondary a:visited, #secondary a:hover, 
 #secondary a:active {
-    color: #fff;
+    color: #ddd;
     text-decoration: none;
 }
 
@@ -315,7 +313,7 @@ h1.entry-title {
 
 /* 2.5 Sidepage */
 #sidepage {
-    margin-top: 2.5rem; /* masthead */
+    margin-top: 2.25rem; /* masthead */
     display: inline-block;
     vertical-align: top;
     width: 0%; /* Collapsed by default. */
