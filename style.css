@@ -101,6 +101,8 @@ blockquote {
 /* 2.2 Categorised post grid */
 #primary {
     margin-top: 2.5rem; /* masthead */
+    display: inline-block;
+    vertical-align: top;
     width: 100%;
 }
 
@@ -244,7 +246,7 @@ h2.entry-title {
     position: absolute;
     right: 0;
     top: 0;
-    bottom: 0;
+    min-height: 100%;
     z-index: 1;
     display: none; /* Hidden by default */
     background: rgba(0, 0, 0, 0.9);
@@ -313,12 +315,10 @@ h1.entry-title {
 
 /* 2.5 Sidepage */
 #sidepage {
-    position: absolute;
-    top: 1px; /* Align with grid-post images. */
-    right: 0;
-    bottom: 0;
+    margin-top: 2.5rem; /* masthead */
+    display: inline-block;
+    vertical-align: top;
     width: 0%; /* Collapsed by default. */
-    height: 100%;
     border-top: 1px solid #222;
 }
 
@@ -423,8 +423,4 @@ button {
 
 .inline-block {
     display: inline-block;
-}
-
-.display-none {
-    display: none;
 }

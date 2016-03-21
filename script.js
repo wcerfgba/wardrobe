@@ -23,10 +23,10 @@ function injectIcons() {
 }
 
 function registerSidepage() {
-    $("#primary").after('<div id="sidepage" class="display-none"></div>');
+    $("#primary").after('<div id="sidepage" style="display: none;"></div>');
     $(".grid-post").click(function () {
         // Clear currently selected grid post, if any.
-        if (! $("#sidepage").hasClass("display-none")) {
+        if ($("#sidepage").css("display") !== "none") {
             var active_title = "#grid-" + $("#sidepage article").attr("id") +
                                "-title";
             $(active_title).removeClass("active-post-title");
@@ -53,8 +53,8 @@ function sidepageLoadHandler(gridPost) {
         }
 
         // Display sidepage if hidden.
-        if ($("#sidepage").hasClass("display-none")) {
-            $("#sidepage").removeClass("display-none");
+        if ($("#sidepage").css("display") === "none") {
+            $("#sidepage").removeAttr("style");
             $("#sidepage").animate({ width: "40%" });
             $("#primary").animate({ width: "60%" });
         }
@@ -64,7 +64,7 @@ function sidepageLoadHandler(gridPost) {
             $(gridPost).children(".grid-post-title")
                        .removeClass("active-post-title");
             $("#sidepage").animate({ width: "0%" }, function () {
-                $("#sidepage").addClass("display-none");
+                $("#sidepage").attr("style", "display: none;");
             });
             $("#primary").animate({ width: "100%" });
         });
@@ -79,7 +79,7 @@ function sidepageLoadHandler(gridPost) {
             }
 
             // Clear currently selected grid post, if any.
-            if (! $("#sidepage").hasClass("display-none")) {
+            if ($("#sidepage").css("display") !== "none") {
                 var active_title = "#grid-" + $("#sidepage article").attr("id") +
                                    "-title";
                 $(active_title).removeClass("active-post-title");
