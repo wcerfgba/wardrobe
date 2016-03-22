@@ -16,13 +16,9 @@ function wardrobe_query_vars( $vars ) {
     return $vars;
 }
 
-function query_all_posts( $query ) {
-    $query->set( 'posts_per_page', -1 );
-}
 
 add_action( 'wp_enqueue_scripts', 'wardrobe_enqueue_scripts' );
 add_action( 'widgets_init', 'wardrobe_widgets_init' );
-add_action( 'pre_get_posts', 'query_all_posts' );
 
 add_filter( 'query_vars', 'wardrobe_query_vars' );
 

@@ -1,7 +1,11 @@
 <?php get_header(); ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-    <?php $cat_posts = array();
+    <?php
+        $full_query = $wp_query->query;
+        $full_query['posts_per_page'] = -1;
+        query_posts( $full_query );
+        $cat_posts = array();
         while ( have_posts() ) : the_post();
             foreach ( get_the_category() as $cat ) :
                 $cat_posts["$cat->cat_ID"][] = get_post();
