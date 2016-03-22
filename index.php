@@ -1,23 +1,32 @@
 <?php get_header(); ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-        <?php foreach ( get_categories( "orderby=id" ) as $cat) : ?>
-            <div id="category-<?php echo $cat->cat_ID; ?>" class="category">
-                <div id="category-<?php echo $cat->cat_ID; ?>-name-div" class="category-name-div">
-                    <h2 class="category-name"><?php echo $cat->cat_name; ?></h2>
+    <?php $cat_posts = array();
+        while ( have_posts() ) : the_post();
+            foreach ( get_the_category() as $cat ) :
+                $cat_posts["$cat->cat_ID"][] = get_post();
+            endforeach;
+        endwhile;
+
+        foreach ( $cat_posts as $cat_id => $posts ) : ?>
+            <div id="category-<?php echo $cat_id; ?>" class="category">
+                <div id="category-<?php echo $cat_id; ?>-name-div" class="category-name-div">
+                    <h2 class="category-name"><?php echo get_cat_name( $cat_id ); ?></h2>
                 </div>
-                <div id="category-<?php echo $cat->cat_ID; ?>-content-div" class="category-content-div">
-                <?php $cat_query = new WP_Query( "cat=$cat->cat_ID" );
-                while ( $cat_query->have_posts() ) : $cat_query->the_post(); ?>
-                    <div id="grid-post-<?php the_ID(); ?>" <?php post_class( 'grid-post' ); ?>>
-                        <div id="grid-post-<?php the_ID(); ?>-thumbnail" class="grid-post-thumbnail">
-                            <?php the_post_thumbnail(); ?>
+                <div id="category-<?php echo $cat_id; ?>-content-div" class="category-content-div">
+                <?php foreach ( $posts as $post ) : 
+                    $post_id = "$post->ID"; ?>
+                    <div id="grid-post-<?php echo $post_id; ?>" <?php post_class( 'grid-post', $post_id ); ?>>
+                        <div id="grid-post-<?php echo $post_id; ?>-thumbnail" class="grid-post-thumbnail">
+                            <?php echo get_the_post_thumbnail( $post_id ); ?>
                         </div>
-                        <div id="grid-post-<?php the_ID(); ?>-title" class="grid-post-title">
-                            <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+                        <div id="grid-post-<?php echo $post_id; ?>-title" class="grid-post-title">
+                            <h2 class="entry-title">
+                            <?php echo get_the_title( $post_id ); ?>
+                            </h2>
                         </div>
                     </div>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
                 </div>
             </div>
         <?php endforeach; ?>
