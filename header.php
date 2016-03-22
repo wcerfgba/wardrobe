@@ -8,8 +8,8 @@
         <?php wp_head(); ?>
     </head>
     <body>
-        <img src="<?php echo esc_url( get_template_directory_uri() . '/icons.svg' ); ?>" class="iconic-sprite" style="display: none;" />
-       <div id="page" class="site">
+        <?php include_once( 'icons.svg' ); ?>
+        <div id="page" class="site">
         <?php if ( is_admin_bar_showing() ) : ?>
             <header id="masthead" class="site-header shift-masthead" role="banner">
         <?php else : ?>

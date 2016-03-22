@@ -267,6 +267,28 @@ h2.entry-title {
     }
 }
 
+/* 2.3.1 Search widget */
+.search-form {
+    position: relative;
+    height: 2rem;
+}
+
+.search-label {
+    position: absolute;
+    left: 0px;
+    right: 2rem;
+}
+
+.search-field {
+    height: 2rem;
+    width: 100%;
+    padding: 1%;
+}
+
+.search-submit {
+    float: right;
+    background: rgba(0, 0, 0, 0);
+}
 
 /* 2.4 Single post */
 .single-post-div {

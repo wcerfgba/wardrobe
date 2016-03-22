@@ -1,10 +1,8 @@
 var $ = window.jQuery;
-var SVGInjector = window.SVGInjector;
 
 
 document.addEventListener("DOMContentLoaded", function () {
     registerSidebarToggle();
-    injectIcons();
     registerSidepage();
 });
 
@@ -18,9 +16,6 @@ function registerSidebarToggle() {
     });
 }
 
-function injectIcons() {
-    SVGInjector(document.querySelectorAll(".iconic-sprite"));
-}
 
 function registerSidepage() {
     $("#primary").after('<div id="sidepage" style="display: none;"></div>');
