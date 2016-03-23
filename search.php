@@ -18,30 +18,27 @@
                     <h2 class="category-name"><?php echo get_cat_name( $cat_id ); ?></h2>
                 </div>
                 <div id="category-<?php echo $cat_id; ?>-content-div" class="category-content-div">
-                <?php foreach ( $posts as $post ) : 
-                    $post_id = "$post->ID"; ?>
-                    <article id="post-<?php echo $post_id; ?>" <?php post_class( 'search-result', $post_id ); ?>>
-                        <div id="search-post-<?php echo $post_id; ?>-thumbnail" class="search-post-thumbnail">
-                            <?php echo get_the_post_thumbnail( $post_id ); ?>
+                <?php foreach ( $posts as $current_post ) :
+                    /* Reinitialise post data for in-the-loop functions. */
+                    global $post;
+                    $post = $current_post;
+                    setup_postdata( $post );
+                ?>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class( 'search-result' ); ?>>
+                        <div id="search-post-<?php the_ID(); ?>-thumbnail" class="search-post-thumbnail">
+                            <?php echo the_post_thumbnail(); ?>
                         </div>
                         <header class="search-result-header">
                             <h2 class="entry-title">
-                            <?php echo get_the_title( $post_id ); ?>
+                            <?php the_title(); ?>
                             </h2>
                         <?php if ( 'post' === get_post_type() ) : ?>
                             <div class="search-entry-meta">
-                                <span class="entry-date"><?php echo get_the_date( '', $post_id ); ?></span>
+                                <span class="entry-date"><?php the_date(); ?></span>
                             </div>
                         <?php endif; ?>
                             <div class="search-result-summary">
-                            <?php
-                            /* WordPress cannot get the excerpt for a specified 
-                             * post, so do it manually. */
-
-                            echo apply_filters( 'the_excerpt',
-                                    apply_filters( 'get_the_excerpt',
-                                        get_post( $post_id )->post_excerpt ) );
-                            ?>
+                            <?php the_excerpt(); ?>
                             </div>
                         </header>
                     </article>
