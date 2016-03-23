@@ -20,16 +20,16 @@
                 <div id="category-<?php echo $cat_id; ?>-content-div" class="category-content-div">
                 <?php foreach ( $posts as $post ) : 
                     $post_id = "$post->ID"; ?>
-                    <div id="grid-post-<?php echo $post_id; ?>" <?php post_class( 'grid-post', $post_id ); ?>>
+                    <article id="grid-post-<?php echo $post_id; ?>" <?php post_class( 'grid-post', $post_id ); ?>>
                         <div id="grid-post-<?php echo $post_id; ?>-thumbnail" class="grid-post-thumbnail">
                             <?php echo get_the_post_thumbnail( $post_id ); ?>
                         </div>
-                        <div id="grid-post-<?php echo $post_id; ?>-title" class="grid-post-title">
-                            <h2 class="entry-title">
+                        <div id="grid-post-<?php echo $post_id; ?>-title-div" class="grid-post-title-div">
+                            <h2 class="grid-post-title">
                             <?php echo get_the_title( $post_id ); ?>
                             </h2>
                         </div>
-                    </div>
+                    </article>
                 <?php endforeach; ?>
                 </div>
             </div>

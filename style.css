@@ -141,7 +141,7 @@ blockquote {
     border: 1px solid #222;
 }
 
-.grid-post-title {
+.grid-post-title-div {
     position: absolute;
     top: 0;
     left: 0;
@@ -154,17 +154,17 @@ blockquote {
     overflow: hidden;
 }
 
-.grid-post-title:hover {
+.grid-post-title-div:hover {
     background: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 1);
 }
 
-.active-post-title {
+.active-post-title-div {
     background: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 1);
 }
 
-h2.entry-title {
+.grid-post-title {
     font-weight: normal;
     position: absolute;
     top: 50%;
@@ -403,6 +403,59 @@ h1.entry-title {
 
 .comment {
     margin-bottom: 2rem;
+}
+
+
+/* 2.7 Search */
+.search-result {
+    width: 100%;
+    margin: 0.666rem 0;
+    background: #111;
+}
+
+.search-post-thumbnail {
+    width: 100%;
+}
+
+.search-result-header {
+    padding: 0.333rem;
+}
+
+.search-entry-meta {
+    font-variant: small-caps;
+    margin-bottom: 0.666rem;
+}
+
+@media (min-width: 400px) {
+    .search-post-thumbnail {
+        width: 10rem;
+        height: 10rem;
+        display: inline-block;
+    }
+
+    .search-result-header {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 799px) {
+    .search-result {
+        width: 100%;
+        height: 10rem;
+    }
+}
+
+@media (min-width: 800px) {
+    .search-result {
+        width: 80%;
+        margin-right: 20%;
+        height: 10rem;
+        margin-top: 0;
+        margin-bottom: 0.666rem;
+        margin-left: 0.5rem;
+        margin-right: 0;
+    }
 }
 
 
