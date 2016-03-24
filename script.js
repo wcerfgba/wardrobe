@@ -19,33 +19,31 @@ function registerSidebarToggle() {
 
 function registerSidepage() {
     $("#primary").after('<div id="sidepage" style="display: none;"></div>');
-    $(".grid-post").click(function () {
+    $(".post-link").click(function (event) {
+        event.preventDefault(); // Don't load the link.
+
         // Clear currently selected grid post, if any.
         if ($("#sidepage").css("display") !== "none") {
             var active_title = "#grid-" + $("#sidepage article").attr("id") +
                                "-title";
+            // TODO: Fix active highlighting for sidepage posts.
             $(active_title).removeClass("active-post-title");
         }
 
         // Load relevant post.
-        var id = gridPostId(this);
-        $("#sidepage").load(document.URL + "?sidepage=true&p=" + id,
+        $("#sidepage").load($(this).attr("href") + "&sidepage=true",
                             sidepageLoadHandler(this));
     });
 }
 
-function gridPostId(gridPost) {
-    return /^grid-post-(\d+)$/.exec($(gridPost).attr("id"))[1];
-}
-
-function sidepageLoadHandler(gridPost) {
+function sidepageLoadHandler(postLink) {
     return function () {
-        // Highlight active post.
+        /* Highlight active post.
         if (! $(gridPost).children(".grid-post-title")
                          .hasClass("active-post-title")) {
             $(gridPost).children(".grid-post-title")
                        .addClass("active-post-title");
-        }
+        }*/
 
         // Display sidepage if hidden.
         if ($("#sidepage").css("display") === "none") {
@@ -56,8 +54,8 @@ function sidepageLoadHandler(gridPost) {
 
         // Bind button listeners.
         $("#sidepage-close-button").click(function () {
-            $(gridPost).children(".grid-post-title")
-                       .removeClass("active-post-title");
+           /* $(gridPost).children(".grid-post-title")
+                       .removeClass("active-post-title");*/
             $("#sidepage").animate({ width: "0%" }, function () {
                 $("#sidepage").attr("style", "display: none;");
             });
@@ -65,12 +63,13 @@ function sidepageLoadHandler(gridPost) {
         });
 
         $("#sidepage-prev-button").click(function () {
-            var prevGridPost;
+            var prevPostLink;
 
-            if ($(gridPost).prev().is(".grid-post")) {
-                prevGridPost = $(gridPost).prev();
+            if ($(postLink).parent().prev().is("article")) {
+                // UNSAFE!
+                prevPostLink = $(postLink).parent().prev().children().first();
             } else {
-                prevGridPost = $(gridPost).siblings().last();
+                prevPostLink = $(postLink).parent().siblings().last().children().first();
             }
 
             // Clear currently selected grid post, if any.
@@ -80,30 +79,29 @@ function sidepageLoadHandler(gridPost) {
                 $(active_title).removeClass("active-post-title");
             }
 
-            var id = gridPostId(prevGridPost);
-            $("#sidepage").load(document.URL + "?sidepage=true&p=" + id,
-                                sidepageLoadHandler(prevGridPost));
+            $("#sidepage").load($(prevPostLink).attr("href") + "&sidepage=true",
+                                sidepageLoadHandler(prevPostLink));
         });
         
         $("#sidepage-next-button").click(function () {
-            var nextGridPost;
+            var nextPostLink;
 
-            if ($(gridPost).next().is(".grid-post")) {
-                nextGridPost = $(gridPost).next();
+            if ($(postLink).parent().next().is("article")) {
+                // UNSAFE!
+                nextPostLink = $(postLink).parent().next().children().first();
             } else {
-                nextGridPost = $(gridPost).siblings().first();
+                nextPostLink = $(postLink).parent().siblings().first().children().first();
             }
 
             // Clear currently selected grid post, if any.
-            if (! $("#sidepage").hasClass("display-none")) {
+            if ($("#sidepage").css("display") !== "none") {
                 var active_title = "#grid-" + $("#sidepage article").attr("id") +
                                    "-title";
                 $(active_title).removeClass("active-post-title");
             }
 
-            var id = gridPostId(nextGridPost);
-            $("#sidepage").load(document.URL + "?sidepage=true&p=" + id,
-                                sidepageLoadHandler(nextGridPost));
+            $("#sidepage").load($(nextPostLink).attr("href") + "&sidepage=true",
+                                sidepageLoadHandler(prevPostLink));
         });
     };
 }
