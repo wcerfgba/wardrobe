@@ -25,14 +25,11 @@
                     setup_postdata( $post );
                 ?>
                     <article id="grid-post-<?php the_ID(); ?>" <?php post_class( 'grid-post' ); ?>>
+                        <a class="post-link" href="<?php echo esc_url( get_permalink() ); ?>" post-title="<?php the_title(); ?>">
                         <div id="grid-post-<?php the_ID(); ?>-thumbnail" class="grid-post-thumbnail">
                             <?php the_post_thumbnail(); ?>
                         </div>
-                        <div id="grid-post-<?php the_ID(); ?>-title-div" class="grid-post-title-div">
-                            <h2 class="grid-post-title">
-                            <?php the_title(); ?>
-                            </h2>
-                        </div>
+                        </a>
                     </article>
                 <?php endforeach; ?>
                 </div>

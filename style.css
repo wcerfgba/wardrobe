@@ -141,24 +141,7 @@ blockquote {
     border: 1px solid #222;
 }
 
-.grid-post-title-div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    transition: background 0.2s ease;
-    transition: color 0.2s ease;
-    background: rgba(0, 0, 0, 0);
-    color: rgba(255, 255, 255, 0);
-    overflow: hidden;
-}
-
-.grid-post-title-div:hover {
-    background: rgba(0, 0, 0, 0.5);
-    color: rgba(255, 255, 255, 1);
-}
-
+/* TODO: Active post titles with a.post-links */
 .active-post-title-div {
     background: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 1);
@@ -408,6 +391,7 @@ h1.entry-title {
 
 /* 2.7 Search */
 .search-result {
+    position: relative;
     width: 100%;
     margin: 0.666rem 0;
     background: #111;
@@ -456,6 +440,51 @@ h1.entry-title {
         margin-left: 0.5rem;
         margin-right: 0;
     }
+}
+
+
+/* 3. Post links */
+a.post-link, a.post-link:link, a.post-link:visited, a.post-link:hover,
+a.post-link:active {
+    color: #eee;
+    display: block;
+    height: 100%;
+}
+
+a.post-link:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+a.post-link:hover:after {
+    opacity: 0.333;
+}
+
+a.post-link:before {
+    display: inline;
+    content: attr(post-title);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    color: #fff;
+    font-size: x-large;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+a.post-link:hover:before {
+    opacity: 1;
 }
 
 

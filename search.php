@@ -25,22 +25,26 @@
                     setup_postdata( $post );
                 ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'search-result' ); ?>>
-                        <div id="search-post-<?php the_ID(); ?>-thumbnail" class="search-post-thumbnail">
-                            <?php echo the_post_thumbnail(); ?>
-                        </div>
-                        <header class="search-result-header">
-                            <h2 class="entry-title">
-                            <?php the_title(); ?>
-                            </h2>
-                        <?php if ( 'post' === get_post_type() ) : ?>
-                            <div class="search-entry-meta">
-                                <span class="entry-date"><?php the_date(); ?></span>
+                        <a class="post-link" href="<?php echo esc_url( get_permalink() ); ?>">
+                            <div id="search-post-<?php the_ID(); ?>-thumbnail" class="search-post-thumbnail">
+                                <?php echo the_post_thumbnail(); ?>
                             </div>
-                        <?php endif; ?>
-                            <div class="search-result-summary">
-                            <?php the_excerpt(); ?>
-                            </div>
-                        </header>
+                            <header class="search-result-header">
+                                <h2 class="entry-title">
+                                <?php the_title(); ?>
+                                </h2>
+                            <?php if ( 'post' === get_post_type() ) : ?>
+                                <div class="search-entry-meta">
+                                    <span class="entry-date">
+                                    <?php the_time( get_option( 'date_format' ) ); ?>
+                                    </span>
+                                </div>
+                            <?php endif; ?>
+                                <div class="search-result-summary">
+                                <?php the_excerpt(); ?>
+                                </div>
+                            </header>
+                        </a>
                     </article>
                 <?php endforeach; ?>
                 </div>
