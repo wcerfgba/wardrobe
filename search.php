@@ -25,7 +25,7 @@
                     setup_postdata( $post );
                 ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'search-result' ); ?>>
-                        <a class="post-link" href="<?php echo esc_url( get_permalink() ); ?>">
+                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo esc_url( get_permalink() ); ?>">
                             <div id="search-post-<?php the_ID(); ?>-thumbnail" class="search-post-thumbnail">
                                 <?php echo the_post_thumbnail(); ?>
                             </div>

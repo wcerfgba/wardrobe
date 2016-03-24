@@ -22,12 +22,11 @@ function registerSidepage() {
     $(".post-link").click(function (event) {
         event.preventDefault(); // Don't load the link.
 
-        // Clear currently selected grid post, if any.
+        // Clear currently active post link, if any.
         if ($("#sidepage").css("display") !== "none") {
-            var active_title = "#grid-" + $("#sidepage article").attr("id") +
-                               "-title";
-            // TODO: Fix active highlighting for sidepage posts.
-            $(active_title).removeClass("active-post-title");
+            var activePostLink = "#" + $("#sidepage article").attr("id") +
+                                 "-link";
+            $(activePostLink).removeClass("active-post-link");
         }
 
         // Load relevant post.
@@ -38,12 +37,10 @@ function registerSidepage() {
 
 function sidepageLoadHandler(postLink) {
     return function () {
-        /* Highlight active post.
-        if (! $(gridPost).children(".grid-post-title")
-                         .hasClass("active-post-title")) {
-            $(gridPost).children(".grid-post-title")
-                       .addClass("active-post-title");
-        }*/
+        // Highlight active post.
+        if (! $(postLink).hasClass("active-post-link")) {
+            $(postLink).addClass("active-post-link");
+        }
 
         // Display sidepage if hidden.
         if ($("#sidepage").css("display") === "none") {
@@ -54,8 +51,7 @@ function sidepageLoadHandler(postLink) {
 
         // Bind button listeners.
         $("#sidepage-close-button").click(function () {
-           /* $(gridPost).children(".grid-post-title")
-                       .removeClass("active-post-title");*/
+            $(postLink).removeClass("active-post-link");
             $("#sidepage").animate({ width: "0%" }, function () {
                 $("#sidepage").attr("style", "display: none;");
             });
@@ -72,11 +68,11 @@ function sidepageLoadHandler(postLink) {
                 prevPostLink = $(postLink).parent().siblings().last().children().first();
             }
 
-            // Clear currently selected grid post, if any.
+            // Clear currently active post link, if any.
             if ($("#sidepage").css("display") !== "none") {
-                var active_title = "#grid-" + $("#sidepage article").attr("id") +
-                                   "-title";
-                $(active_title).removeClass("active-post-title");
+                var activePostLink = "#" + $("#sidepage article").attr("id") +
+                                     "-link";
+                $(activePostLink).removeClass("active-post-link");
             }
 
             $("#sidepage").load($(prevPostLink).attr("href") + "&sidepage=true",
@@ -93,15 +89,15 @@ function sidepageLoadHandler(postLink) {
                 nextPostLink = $(postLink).parent().siblings().first().children().first();
             }
 
-            // Clear currently selected grid post, if any.
+            // Clear currently active post link, if any.
             if ($("#sidepage").css("display") !== "none") {
-                var active_title = "#grid-" + $("#sidepage article").attr("id") +
-                                   "-title";
-                $(active_title).removeClass("active-post-title");
+                var activePostLink = "#" + $("#sidepage article").attr("id") +
+                                     "-link";
+                $(activePostLink).removeClass("active-post-link");
             }
 
             $("#sidepage").load($(nextPostLink).attr("href") + "&sidepage=true",
-                                sidepageLoadHandler(prevPostLink));
+                                sidepageLoadHandler(nextPostLink));
         });
     };
 }

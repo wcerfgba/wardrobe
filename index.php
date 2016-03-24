@@ -25,7 +25,7 @@
                     setup_postdata( $post );
                 ?>
                     <article id="grid-post-<?php the_ID(); ?>" <?php post_class( 'grid-post' ); ?>>
-                        <a class="post-link" href="<?php echo esc_url( get_permalink() ); ?>" post-title="<?php the_title(); ?>">
+                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo esc_url( get_permalink() ); ?>" post-title="<?php the_title(); ?>">
                         <div id="grid-post-<?php the_ID(); ?>-thumbnail" class="grid-post-thumbnail">
                             <?php the_post_thumbnail(); ?>
                         </div>
