@@ -1,0 +1,23 @@
+body {
+    background: #000;
+    color: #eee;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+#page {
+    position: relative;
+    min-height: 100vh;
+}
+
+#primary {
+    background: #eee;
+}
+
+#main {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    background: #000;
+}
+
