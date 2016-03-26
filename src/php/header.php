@@ -12,25 +12,23 @@
         <?php include_once( 'icons.svg' ); ?>
         <div id="page" class="site">
         <?php if ( is_admin_bar_showing() ) : ?>
-            <header id="masthead" class="site-header shift-masthead" role="banner">
+            <header id="masthead" class="site-header masthead_shift" role="banner">
         <?php else : ?>
             <header id="masthead" class="site-header" role="banner">
         <?php endif; ?>
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                <div class="float-right">
-                <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-                    <div class="sidebar-button-wrapper inline-block">
-                        <button id="sidebar-toggle" aria-controls="secondary" aria-expanded="false">
-                            <svg viewBox="0 0 8 8" class="icon">
-                                <use xlink:href="#menu" class="icon-use icon-menu"></use>
-                            </svg>
-                            <span class="button-text text-menu">
-                                <?php esc_html_e( 'Menu', 'wardrobe' ); ?>
-                            </span>
-                        </button>
-                    </div>
-                <?php endif; ?>
+            <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+                <div class="sidebar-button">
+                    <button class="sidebar-button__button" aria-controls="secondary" aria-expanded="false">
+                        <svg viewBox="0 0 8 8" class="icon">
+                            <use xlink:href="#menu" class="icon-use icon-menu"></use>
+                        </svg>
+                        <span class="button__text text-menu">
+                            <?php esc_html_e( 'Menu', 'wardrobe' ); ?>
+                        </span>
+                    </button>
                 </div>
+            <?php endif; ?>
             </header>
         <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
             <aside id="secondary" class="sidebar widget-area" role="complementary">

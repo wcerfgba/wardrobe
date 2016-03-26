@@ -1,5 +1,4 @@
 #sidepage {
-    margin-top: 2.25rem; /* masthead */
     display: inline-block;
     vertical-align: top;
     width: 0%; /* Collapsed by default. */
@@ -12,6 +11,11 @@
     background: #000;
 }
 
-.prev-next-nav {
+.sidepage-close-button {
+    display: inline-block;
+}
+
+.sidepage-nav-buttons {
+    display: inline-block;
     float: right;
 }

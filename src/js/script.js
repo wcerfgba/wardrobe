@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function registerSidebarToggle() {
-    var button = $("#sidebar-toggle");
+    var button = $(".sidebar-button__button");
     var sidebar = $("#secondary");
     
     button.click(function () {
@@ -18,7 +18,7 @@ function registerSidebarToggle() {
 
 
 function registerSidepage() {
-    $("#primary").after('<div id="sidepage" style="display: none;"></div>');
+    $("#main").after('<div id="sidepage" style="display: none;"></div>');
     $(".post-link").click(function (event) {
         event.preventDefault(); // Don't load the link.
 
@@ -26,7 +26,7 @@ function registerSidepage() {
         if ($("#sidepage").css("display") !== "none") {
             var activePostLink = "#" + $("#sidepage article").attr("id") +
                                  "-link";
-            $(activePostLink).removeClass("active-post-link");
+            $(activePostLink).removeClass("post-link_active");
         }
 
         // Load relevant post.
@@ -38,27 +38,27 @@ function registerSidepage() {
 function sidepageLoadHandler(postLink) {
     return function () {
         // Highlight active post.
-        if (! $(postLink).hasClass("active-post-link")) {
-            $(postLink).addClass("active-post-link");
+        if (! $(postLink).hasClass("post-link_active")) {
+            $(postLink).addClass("post-link_active");
         }
 
         // Display sidepage if hidden.
         if ($("#sidepage").css("display") === "none") {
             $("#sidepage").removeAttr("style");
             $("#sidepage").animate({ width: "40%" });
-            $("#primary").animate({ width: "60%" });
+            $("#main").animate({ width: "60%" });
         }
 
         // Bind button listeners.
-        $("#sidepage-close-button").click(function () {
-            $(postLink).removeClass("active-post-link");
+        $(".sidepage-close-button__button").click(function () {
+            $(postLink).removeClass("post-link_active");
             $("#sidepage").animate({ width: "0%" }, function () {
                 $("#sidepage").attr("style", "display: none;");
             });
-            $("#primary").animate({ width: "100%" });
+            $("#main").animate({ width: "100%" });
         });
 
-        $("#sidepage-prev-button").click(function () {
+        $(".sidepage-nav-buttons__prev-button").click(function () {
             var prevPostLink;
 
             if ($(postLink).parent().prev().is("article")) {
@@ -72,14 +72,14 @@ function sidepageLoadHandler(postLink) {
             if ($("#sidepage").css("display") !== "none") {
                 var activePostLink = "#" + $("#sidepage article").attr("id") +
                                      "-link";
-                $(activePostLink).removeClass("active-post-link");
+                $(activePostLink).removeClass("post-link_active");
             }
 
             $("#sidepage").load($(prevPostLink).attr("href") + "&sidepage=true",
                                 sidepageLoadHandler(prevPostLink));
         });
         
-        $("#sidepage-next-button").click(function () {
+        $(".sidepage-nav-buttons__next-button").click(function () {
             var nextPostLink;
 
             if ($(postLink).parent().next().is("article")) {
@@ -93,7 +93,7 @@ function sidepageLoadHandler(postLink) {
             if ($("#sidepage").css("display") !== "none") {
                 var activePostLink = "#" + $("#sidepage article").attr("id") +
                                      "-link";
-                $(activePostLink).removeClass("active-post-link");
+                $(activePostLink).removeClass("post-link_active");
             }
 
             $("#sidepage").load($(nextPostLink).attr("href") + "&sidepage=true",

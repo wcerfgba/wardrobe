@@ -41,7 +41,7 @@ a.post-link:hover:before {
     opacity: 1;
 }
 
-a.active-post-link:after {
+a.post-link_active:after {
     content: "";
     position: absolute;
     top: 0;
@@ -52,7 +52,7 @@ a.active-post-link:after {
     opacity: 0.333;
 }
 
-a.active-post-link:before {
+a.post-link_active:before {
     display: inline;
     content: attr(post-title);
     position: absolute;

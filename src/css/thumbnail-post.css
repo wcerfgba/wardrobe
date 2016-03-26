@@ -1,0 +1,49 @@
+.thumbnail-post {
+    float: left;
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    border: 1px solid #222;
+}
+
+.thumbnail-post__thumbnail {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+
+@media (min-width: 400px) and (max-width: 599px) {
+    .thumbnail-post {
+        width: 50%;
+        padding-bottom: 50%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 799px) {
+    .thumbnail-post {
+        width: 33.333%;
+        padding-bottom: 33.333%;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 999px) {
+    .thumbnail-post {
+        width: 33.333%;
+        padding-bottom: 33.333%;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+    .thumbnail-post {
+        width: 25%;
+        padding-bottom: 25%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .thumbnail-post {
+        width: 20%;
+        padding-bottom: 20%;
+    }
+}

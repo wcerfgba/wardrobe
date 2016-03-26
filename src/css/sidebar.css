@@ -1,26 +1,30 @@
-#secondary {
+.sidebar-button {
+    float: right;
+    display: inline-block;
+}
+
+.sidebar {
     position: absolute;
     right: 0;
-    top: 2.25rem; /* masthead */
     min-height: 100%;
     z-index: 1;
     display: none; /* Hidden by default */
     background: rgba(0, 0, 0, 0.9);
 }
 
-#secondary > li {
+.sidebar > li {
     display: block;
     margin: 0.666rem;
 }
 
-#secondary a, #secondary a:link, #secondary a:visited, #secondary a:hover, 
-#secondary a:active {
+.sidebar a, .sidebar a:link, .sidebar a:visited, .sidebar a:hover, 
+.sidebar a:active {
     color: #ddd;
     text-decoration: none;
 }
 
 @media (max-width: 30rem) {
-    #secondary {
+    .sidebar {
         width: 100%;
     }
 }

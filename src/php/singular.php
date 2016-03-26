@@ -2,33 +2,33 @@
     <?php get_header(); ?>
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
-            <div class="single-post-div">
+            <div class="page">
 <?php else : ?>
     <div class="sidepage-bar">
-        <div class="sidepage-close-div inline-block">
-            <button id="sidepage-close-button">
+        <div class="sidepage-close-button">
+            <button class="sidepage-close-button__button">
                 <svg viewBox="0 0 8 8" class="icon">
-                    <use xlink:href="#x" class="icon-use icon-close-sidepage"></use>
+                    <use xlink:href="#x" class="icon-use icon-sidepage-close"></use>
                 </svg>
-                <span class="button-text text-close-sidepage">
+                <span class="button__text text-sidepage-close">
                     <?php esc_html_e( 'Close', 'wardrobe' ); ?>
                 </span>
             </button>
         </div>
-        <div class="prev-next-nav inline-block">
-            <button id="sidepage-prev-button">
+        <div class="sidepage-nav-buttons">
+            <button class="sidepage-nav-buttons__prev-button">
                 <svg viewBox="0 0 8 8" class="icon">
-                    <use xlink:href="#chevron-left" class="icon-use icon-prev-nav"></use>
+                    <use xlink:href="#chevron-left" class="icon-use icon-sidepage-nav-prev"></use>
                 </svg>
-                <span class="button-text text-prev-nav">
+                <span class="button__text text-sidepage-nav-prev">
                     <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
                 </span>
             </button>
-            <button id="sidepage-next-button">
+            <button class="sidepage-nav-buttons__next-button">
                 <svg viewBox="0 0 8 8" class="icon">
-                    <use xlink:href="#chevron-right" class="icon-use icon-next-nav"></use>
+                    <use xlink:href="#chevron-right" class="icon-use icon-sidepage-nav-next"></use>
                 </svg>
-                <span class="button-text text-next-nav">
+                <span class="button__text text-sidepage-nav-next">
                     <?php esc_html_e( 'Next', 'wardrobe' ); ?>
                 </span>
             </button>
@@ -36,21 +36,21 @@
     </div>
 <?php endif; ?>
             <?php while ( have_posts() ) : the_post(); ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post' ); ?>>
-                    <header class="entry-header">
-                        <div id="single-post-<?php the_ID(); ?>-thumbnail" class="single-post-thumbnail">
+                <article id="post-<?php the_ID(); ?>" <?php post_class( 'singular' ); ?>>
+                    <header class="singular-header">
+                        <div id="post-<?php the_ID(); ?>__thumbnail" class="singular-header__thumbnail">
                             <?php the_post_thumbnail( 'full' ); ?>
                         </div>
-                        <div id="single-post-<?php the_ID(); ?>-title" class="single-post-title">
-                            <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+                        <div id="post-<?php the_ID(); ?>-title" class="singular-header-title">
+                            <?php the_title( '<h1 class="singular-header-title__heading">', '</h1>' ); ?>
                         </div>
                     <?php if ( 'post' === get_post_type() ) : ?>
-                        <div class="entry-meta">
+                        <div class="singular-header-meta">
                             <span class="entry-date"><?php echo get_the_date(); ?></span>
                         </div>
                     <?php endif; ?>
                     </header>
-                    <div class="entry-content">
+                    <div class="singular-content">
                         <?php
                             the_content();
                             wp_link_pages( array(

@@ -7,7 +7,7 @@
     background: #000;
 }
 
-.shift-masthead {
+.masthead_shift {
     top: 32px !important; /* Shift when admin bar is displayed. */
 }
 
@@ -27,4 +27,8 @@
 	content: "";
 	display: block;
 	clear: both;
+}
+
+#content {
+    margin-top: 2.25rem;
 }

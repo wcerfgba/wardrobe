@@ -5,7 +5,7 @@
     background: #111;
 }
 
-.search-post-thumbnail {
+.search-result__thumbnail {
     width: 100%;
 }
 
@@ -13,13 +13,14 @@
     padding: 0.333rem;
 }
 
-.search-entry-meta {
+.search-result-header__meta {
     font-variant: small-caps;
     margin-bottom: 0.666rem;
 }
 
+
 @media (min-width: 400px) {
-    .search-post-thumbnail {
+    .search-result__thumbnail {
         width: 10rem;
         height: 10rem;
         display: inline-block;
