@@ -19,9 +19,12 @@ module.exports = function(grunt) {
       dist: {
         files: [
           {
-            cwd: 'src/js',
-            src: [ '*.js' ],
+            src: [ 'src/js/*.js' ],
             dest: 'dist/<%= pkg.name %>.js'
+          },
+          {
+            src: [ 'src/css/*.css' ],
+            dest: 'dist/style.css'
           }
         ]
       }
@@ -39,29 +42,18 @@ module.exports = function(grunt) {
         ]
       }
     },
-    cssmin: {
-      dist: {
-        files: [
-          {
-            cwd: 'src/css',
-            src: [ '*.css' ],
-            dest: 'dist/<%= pkg.name %>.min.css'
-          }
-        ]
-      }
-    },
     copy: {
       dist: {
         files: [
           {
             expand: true,
-            cwd: 'src/php',
+            cwd: 'src/php/',
             src: [ '*.php' ],
             dest: 'dist/'
           },
           {
             expand: true,
-            cwd: 'src/assets',
+            cwd: 'src/assets/',
             src: [ '*' ],
             dest: 'dist/'
           }
@@ -112,10 +104,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
-  grunt.registerTask('default', [ 'concat', 'uglify', 'cssmin', 'copy' ]);
+  grunt.registerTask('default', [ 'concat', 'uglify', 'copy' ]);
 
 };
