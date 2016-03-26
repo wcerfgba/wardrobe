@@ -1,0 +1,40 @@
+.single-post-div {
+    margin: 0 auto;
+    max-width: 36rem;
+    width: 100%;
+}
+
+.single-post {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 1rem 3rem;
+    background: #eee;
+    color: #000;
+}
+
+.entry-header {
+    width: 100%;
+}
+
+.single-post-thumbnail {
+    margin-top: -1rem;     /* Cancel padding at edges. */
+    margin-left: -3rem;
+    margin-right: -3rem;
+    margin-bottom: 0.666rem;
+}
+
+h1.entry-title {
+    text-align: center;
+    margin-bottom: 0.666rem;
+}
+
+.entry-meta {
+    font-variant: small-caps;
+    text-align: center;
+    margin-bottom: 0.666rem;
+}
+
+.entry-content {
+    width: 100%;
+}

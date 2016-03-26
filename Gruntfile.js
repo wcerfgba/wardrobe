@@ -5,17 +5,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
     concat: {
-      options: {
-        stripBanners: true,
-        banner: '<%= pkg.banner %>'
-      },
       dist: {
         files: [
           {
@@ -23,16 +14,13 @@ module.exports = function(grunt) {
             dest: 'dist/<%= pkg.name %>.js'
           },
           {
-            src: [ 'src/css/*.css' ],
+            src: [ 'src/css/style.css', 'src/css/*.css' ],
             dest: 'dist/style.css'
           }
         ]
       }
     },
     uglify: {
-      options: {
-        banner: '<%= pkg.banner %>'
-      },
       dist: {
         files: [
           {
@@ -91,9 +79,9 @@ module.exports = function(grunt) {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      lib_test: {
-        files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test', 'qunit']
+      test: {
+        files: 'src/**/*',
+        tasks: [ 'default' ]
       }
     }
   });

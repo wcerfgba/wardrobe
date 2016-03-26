@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #eee;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+#page {
+    position: relative;
+    min-height: 100vh;
+}
+
+input, textarea {
+    border: 1px solid #222;
+    background: #eee;
+}
+
+p {
+    margin: 0.5rem 0;
+    text-align: justify;
+}
+
+.screen-reader-text {
+    display: none;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    color: #222;
+    text-decoration: none;
+}
+
+blockquote {
+    margin-left: 1rem;
+    border-left: 2px solid #bbb;
+    padding-left: 1rem;
+}

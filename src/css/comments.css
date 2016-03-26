@@ -1,0 +1,50 @@
+.comments-area {
+    margin-top: 1.333rem;
+    padding: 0.333rem;
+    font-size: 0.75rem;
+}
+
+.comment-form-comment label {
+    float: left;
+}
+
+.comment-form-author label {
+    float: left;
+}
+
+.comment-form-email label {
+    float: left;
+}
+
+.comment-form-url label {
+    float: left;
+}
+
+.comment-form-comment textarea {
+    width: 100%;
+}
+
+.comment-form-author input {
+    width: 100%;
+}
+
+.comment-form-email input {
+    width: 100%;
+}
+
+.comment-form-url input {
+    width: 100%;
+}
+
+.comment-list {
+    list-style-type: none;
+    padding: 0 1rem;
+}
+
+.comments-title {
+    margin-bottom: 0.5rem;
+}
+
+.comment {
+    margin-bottom: 2rem;
+}

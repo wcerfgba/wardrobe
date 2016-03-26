@@ -1,0 +1,17 @@
+#sidepage {
+    margin-top: 2.25rem; /* masthead */
+    display: inline-block;
+    vertical-align: top;
+    width: 0%; /* Collapsed by default. */
+    border-top: 1px solid #222;
+}
+
+.sidepage-bar {
+    width: 100%;
+    height: 2rem;
+    background: #000;
+}
+
+.prev-next-nav {
+    float: right;
+}

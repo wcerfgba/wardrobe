@@ -1,0 +1,30 @@
+#masthead {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 0.125rem 0.5rem;
+    width: 100%;
+    background: #000;
+}
+
+.shift-masthead {
+    top: 32px !important; /* Shift when admin bar is displayed. */
+}
+
+.site-title {
+	display: inline-block;
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+.site-title a, .site-title a:link, .site-title a:visited, .site-title a:hover, 
+.site-title a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+#masthead:after {
+	content: "";
+	display: block;
+	clear: both;
+}

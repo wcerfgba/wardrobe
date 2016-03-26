@@ -1,0 +1,22 @@
+button {
+    background: #000;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    line-height: 1rem;
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.icon-use {
+    fill: #fff;
+}
+
+.button-text {
+    display: none;
+}

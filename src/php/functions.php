@@ -4,7 +4,7 @@ function wardrobe_enqueue_scripts() {
 	wp_enqueue_style( 'core', get_stylesheet_uri(), false ); 
 	
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'script', get_template_directory_uri() . '/script.js', false );
+	wp_enqueue_script( 'script', get_template_directory_uri() . '/wardrobe.min.js', false );
 }
 
 function wardrobe_widgets_init() {
