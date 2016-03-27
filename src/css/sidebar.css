@@ -1,6 +1,5 @@
 .sidebar-button {
-    float: right;
-    display: inline-block;
+    margin-left: 1rem;
 }
 
 .sidebar {

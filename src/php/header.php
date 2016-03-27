@@ -18,9 +18,9 @@
         <?php endif; ?>
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
             <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-                <div class="sidebar-button">
+                <div class="sidebar-button buttons-right">
                     <button class="sidebar-button__button" aria-controls="secondary" aria-expanded="false">
-                        <svg viewBox="0 0 8 8" class="icon">
+                        <svg viewBox="0 1 8 8" class="icon">
                             <use xlink:href="#menu" class="icon-use icon-menu"></use>
                         </svg>
                         <span class="button__text text-menu">
@@ -29,6 +29,26 @@
                     </button>
                 </div>
             <?php endif; ?>
+            <?php if ( get_query_var( 'nav_position', false ) ) : wardrobe_session_nav_start(); ?>
+                <div class="nav-links buttons-right">
+                    <a class="nav-links__prev-link button-link" href="<?php echo wardrobe_session_nav_link_prev(); ?>">
+                        <svg viewBox="0 0 8 8" class="icon">
+                            <use xlink:href="#chevron-left" class="icon-use icon-nav-prev"></use>
+                        </svg>
+                        <span class="link__text text-nav-prev">
+                            <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
+                        </span>
+                    </a>
+                    <a class="nav-links__next-link button-link" href="<?php echo wardrobe_session_nav_link_next(); ?>">
+                        <svg viewBox="0 0 8 8" class="icon">
+                            <use xlink:href="#chevron-right" class="icon-use icon-nav-next"></use>
+                        </svg>
+                        <span class="link__text text-nav-next">
+                            <?php esc_html_e( 'Next', 'wardrobe' ); ?>
+                        </span>
+                    </a>
+                </div>
+            <?php session_write_close(); endif; ?>
             </header>
         <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
             <aside id="secondary" class="sidebar widget-area" role="complementary">

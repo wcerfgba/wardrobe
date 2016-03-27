@@ -12,6 +12,12 @@
                 $cat_posts["$cat->cat_ID"][] = get_post();
             endforeach;
         endwhile;
+
+        /* Construct new nav session. */
+        wardrobe_session_nav_start();
+        session_regenerate_id();
+        wardrobe_session_nav_set( $cat_posts );
+        session_write_close();
     ?>
         <div class="category-grid">
         <?php foreach ( $cat_posts as $cat_id => $posts ) : ?>
@@ -20,14 +26,14 @@
                     <h2 class="category-name__heading"><?php echo get_cat_name( $cat_id ); ?></h2>
                 </div>
                 <div id="category-<?php echo $cat_id; ?>-content" class="category-content">
-                <?php foreach ( $posts as $current_post ) :
+                <?php foreach ( $posts as $idx => $current_post ) :
                     /* Reinitialise post data for in-the-loop functions. */
                     global $post;
                     $post = $current_post;
                     setup_postdata( $post );
                 ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'thumbnail-post' ); ?>>
-                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo esc_url( get_permalink() ); ?>" post-title="<?php the_title(); ?>">
+                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo wardrobe_session_nav_permalink( $cat_id, $idx ); ?>" post-title="<?php the_title(); ?>">
                             <div id="post-<?php the_ID(); ?>__thumbnail" class="thumbnail-post__thumbnail">
                             <?php the_post_thumbnail(); ?>
                             </div>
