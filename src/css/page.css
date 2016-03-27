@@ -12,6 +12,7 @@ body {
 
 #primary {
     background: #eee;
+    overflow: hidden;
 }
 
 #main {
@@ -19,5 +20,7 @@ body {
     vertical-align: top;
     width: 100%;
     background: #000;
+    padding-bottom: 100%; /* Stretch to page. */
+    margin-bottom: -100%;
 }
 

@@ -20,6 +20,11 @@ function registerSidebarToggle() {
 function registerSidepage() {
     $("#main").after('<div id="sidepage" style="display: none;"></div>');
     $(".post-link").click(function (event) {
+        // Follow the link if the sidepage would be too small.
+        if (window.innerWidth < 1000) {
+            return;
+        }
+
         event.preventDefault(); // Don't load the link.
 
         // Clear currently active post link, if any.
