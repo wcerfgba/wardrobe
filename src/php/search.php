@@ -12,6 +12,12 @@
                 $cat_posts["$cat->cat_ID"][] = get_post();
             endforeach;
         endwhile;
+        
+        /* Construct new nav session. */
+        wardrobe_session_nav_start();
+        session_regenerate_id();
+        wardrobe_session_nav_set( $cat_posts );
+        session_write_close();
     ?>
         <div class="category-grid">
         <?php foreach ( $cat_posts as $cat_id => $posts ) : ?>
@@ -27,7 +33,7 @@
                     setup_postdata( $post );
                 ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'search-result' ); ?>>
-                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo esc_url( get_permalink() ); ?>">
+                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo wardrobe_session_nav_permalink( $cat_id, $idx ); ?>" post-title="<?php the_title(); ?>">
                             <div id="post-<?php the_ID(); ?>__thumbnail" class="search-result__thumbnail">
                                 <?php echo the_post_thumbnail(); ?>
                             </div>
