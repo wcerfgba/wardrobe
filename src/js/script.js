@@ -34,14 +34,45 @@ function registerSidepage() {
             $(activePostLink).removeClass("post-link_active");
         }
 
-        // Load relevant post.
-        $("#sidepage").load($(this).attr("href") + "&sidepage=true",
-                            sidepageLoadHandler(this));
+        loadSidepage(this);
     });
 }
 
-function sidepageLoadHandler(postLink) {
-    return function () {
+var sidepageCloseButtonHTML = 
+'<div class="buttons-left">' +
+'   <button class="sidepage-close-button">' +
+'   	<svg viewBox="0 0 8 8" class="icon">' +
+'   		<use xlink:href="#x" class="icon-use icon-close-sidepage"></use>' +
+'   	</svg>' +
+'   	<span class="button-text text-close-sidepage">Close</span>' +
+'   </button>' +
+'</div>';
+
+function loadSidepage(postLink) {
+    $.get($(postLink).attr("href"), function (data) {
+        // Build data.
+        data = $(data);
+        
+        // Extract header and content.
+        var header = $("#masthead", data);
+        var content = $("article", data);
+
+        // Mangle header.
+        header.removeAttr("id")
+              .removeClass()
+              .addClass("sidepage-header");
+        $(".site-title", header).replaceWith(sidepageCloseButtonHTML);
+        $(".sidebar-button", header).remove();
+        
+        // Clear currently active post link, if any.
+        var activePostLink = "#" + $("#sidepage article").attr("id") + "-link";
+        $(activePostLink).removeClass("post-link_active");
+
+        // Insert header and content into sidepage.
+        $("#sidepage").html("")
+                      .append(header)
+                      .append(content);
+
         // Highlight active post.
         if (! $(postLink).hasClass("post-link_active")) {
             $(postLink).addClass("post-link_active");
@@ -55,54 +86,22 @@ function sidepageLoadHandler(postLink) {
         }
 
         // Bind button listeners.
-        $(".sidepage-close-button__button").click(function () {
+        $(".sidepage-close-button").click(function () {
             $(postLink).removeClass("post-link_active");
             $("#sidepage").animate({ width: "0%" }, function () {
                 $("#sidepage").attr("style", "display: none;");
             });
             $("#main").animate({ width: "100%" });
         });
-
-        $(".sidepage-nav-buttons__prev-button").click(function () {
-            var prevPostLink;
-
-            if ($(postLink).parent().prev().is("article")) {
-                // UNSAFE!
-                prevPostLink = $(postLink).parent().prev().children().first();
-            } else {
-                prevPostLink = $(postLink).parent().siblings().last().children().first();
-            }
-
-            // Clear currently active post link, if any.
-            if ($("#sidepage").css("display") !== "none") {
-                var activePostLink = "#" + $("#sidepage article").attr("id") +
-                                     "-link";
-                $(activePostLink).removeClass("post-link_active");
-            }
-
-            $("#sidepage").load($(prevPostLink).attr("href") + "&sidepage=true",
-                                sidepageLoadHandler(prevPostLink));
-        });
         
-        $(".sidepage-nav-buttons__next-button").click(function () {
-            var nextPostLink;
+        $(".nav-links__prev-link").click(sidepageNavButtonHandler);
+        $(".nav-links__next-link").click(sidepageNavButtonHandler);
+    });
+}
 
-            if ($(postLink).parent().next().is("article")) {
-                // UNSAFE!
-                nextPostLink = $(postLink).parent().next().children().first();
-            } else {
-                nextPostLink = $(postLink).parent().siblings().first().children().first();
-            }
+function sidepageNavButtonHandler(event) {
+    event.preventDefault();
 
-            // Clear currently active post link, if any.
-            if ($("#sidepage").css("display") !== "none") {
-                var activePostLink = "#" + $("#sidepage article").attr("id") +
-                                     "-link";
-                $(activePostLink).removeClass("post-link_active");
-            }
-
-            $("#sidepage").load($(nextPostLink).attr("href") + "&sidepage=true",
-                                sidepageLoadHandler(nextPostLink));
-        });
-    };
+    var postLink = $("#post-" + $(this).attr("post-id") + "-link");
+    loadSidepage(postLink);
 }

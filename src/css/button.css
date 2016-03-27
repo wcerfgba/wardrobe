@@ -35,6 +35,11 @@ button {
     display: none;
 }
 
+.buttons-left {
+    display: inline-block;
+    height: 2rem;
+}
+
 .buttons-right {
     display: inline-block;
     float: right;
