@@ -1,0 +1,6 @@
+.flex-page {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+}

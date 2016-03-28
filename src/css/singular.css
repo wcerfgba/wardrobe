@@ -5,12 +5,14 @@
 }
 
 .singular {
+    float: left;
     width: 100%;
     min-height: 100%;
     margin: 0 auto;
     padding: 1rem 3rem;
     background: #eee;
     color: #000;
+    border: 1px solid #000;
 }
 
 .singular-header {
