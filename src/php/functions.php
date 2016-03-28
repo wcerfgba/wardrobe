@@ -16,6 +16,24 @@ function wardrobe_after_setup_theme() {
     set_post_thumbnail_size( 300, 300 );
 }
 
+function wardrobe_outfit_init() {
+    add_rewrite_rule( '^outfit/([0-9]+(?::[0-9]+)*)/?',
+                      'index.php?pagename=outfit&outfit=$matches[1]', 'top' );
+
+    if ( ! get_page_by_title( 'outfit' ) ) {
+        $_p = array();
+        $_p['post_title'] = 'outfit';
+        $_p['post_content'] = 'This page implements theme functionality. Content here will not be displayed.';
+        $_p['post_status'] = 'publish';
+        $_p['post_type'] = 'page';
+        $_p['comment_status'] = 'closed';
+        $_p['ping_status'] = 'closed';
+        $_p['post_category'] = array(1);
+
+        wp_insert_post( $_p );
+    }
+}
+
 function wardrobe_query_vars( $vars ) {
     $vars[] = 'sidepage';
     $vars[] = 'nav_position';
@@ -26,6 +44,8 @@ function wardrobe_query_vars( $vars ) {
 add_action( 'wp_enqueue_scripts', 'wardrobe_enqueue_scripts' );
 add_action( 'widgets_init', 'wardrobe_widgets_init' );
 add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
+
+add_action( 'init', 'wardrobe_outfit_init' );
 
 add_filter( 'query_vars', 'wardrobe_query_vars' );
 
