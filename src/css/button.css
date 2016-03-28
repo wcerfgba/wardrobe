@@ -13,6 +13,12 @@ button {
     margin: 0.5rem;
 }
 
+.icon_big {
+    width: 1rem;
+    height: 1rem;
+    margin: 1rem;
+}
+
 .icon-use {
     fill: #fff;
 }
@@ -22,7 +28,6 @@ button {
 }
 
 .button-link {
-    display: inline-block;
     background: #000;
     margin: 0;
     padding: 0;
@@ -36,12 +41,11 @@ button {
 }
 
 .buttons-left {
-    display: inline-block;
-    height: 2rem;
+    float: left;
+    height: 100%;
 }
 
 .buttons-right {
-    display: inline-block;
     float: right;
-    height: 2rem;
+    height: 100%;
 }

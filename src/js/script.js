@@ -63,6 +63,7 @@ function loadSidepage(postLink) {
               .addClass("sidepage-header");
         $(".site-title", header).replaceWith(sidepageCloseButtonHTML);
         $(".sidebar-button", header).remove();
+        $(".icon_big", header).attr("class", "icon");
         
         // Clear currently active post link, if any.
         var activePostLink = "#" + $("#sidepage article").attr("id") + "-link";

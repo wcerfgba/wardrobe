@@ -17,10 +17,29 @@
             <header id="masthead" class="site-header" role="banner">
         <?php endif; ?>
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <?php if ( get_query_var( 'outfit', false ) ) : ?>
+                <div id="outfit-bar" class="outfit-bar">
+                    <?php foreach ( wardrobe_outfit_post_ids() as $id ) : ?>
+                    <article id="post-<?php echo $id; ?>" <?php post_class( 'outfit-post' ); ?>>
+                        <div id="post-<?php echo $id; ?>__thumbnail" class="outfit-post__thumbnail">
+                        <?php echo get_the_post_thumbnail( $id, 'thumbnail' ); ?>
+                        </div>
+                    </article>
+                    <?php endforeach; ?>
+                    <div class="outfit-expand-button button-link">
+                        <svg viewBox="0 0 8 8" class="icon_big outfit-expand-button__icon">
+                            <use xlink:href="#chevron-bottom" class="icon-use icon-outfit-expand"></use>
+                        </svg>
+                        <span class="link__text text-outfit-expand">
+                            <?php esc_html_e( 'Expand outfit', 'wardrobe' ); ?>
+                        </span>
+                    </div>
+                </div>
+            <?php endif; ?>
             <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
                 <div class="sidebar-button buttons-right">
                     <button class="sidebar-button__button" aria-controls="secondary" aria-expanded="false">
-                        <svg viewBox="0 1 8 8" class="icon">
+                        <svg viewBox="0 1 8 8" class="icon_big">
                             <use xlink:href="#menu" class="icon-use icon-menu"></use>
                         </svg>
                         <span class="button__text text-menu">
@@ -32,7 +51,7 @@
             <?php if ( get_query_var( 'nav_position', false ) ) : wardrobe_session_nav_start(); ?>
                 <div class="nav-links buttons-right">
                     <a class="nav-links__prev-link button-link" <?php wardrobe_session_nav_link_prev_attrs(); ?>>
-                        <svg viewBox="0 0 8 8" class="icon">
+                        <svg viewBox="0 0 8 8" class="icon_big">
                             <use xlink:href="#chevron-left" class="icon-use icon-nav-prev"></use>
                         </svg>
                         <span class="link__text text-nav-prev">
@@ -40,7 +59,7 @@
                         </span>
                     </a>
                     <a class="nav-links__next-link button-link" <?php echo wardrobe_session_nav_link_next_attrs(); ?>>
-                        <svg viewBox="0 0 8 8" class="icon">
+                        <svg viewBox="0 0 8 8" class="icon_big">
                             <use xlink:href="#chevron-right" class="icon-use icon-nav-next"></use>
                         </svg>
                         <span class="link__text text-nav-next">

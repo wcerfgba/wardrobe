@@ -19,6 +19,7 @@ function wardrobe_after_setup_theme() {
 function wardrobe_query_vars( $vars ) {
     $vars[] = 'sidepage';
     $vars[] = 'nav_position';
+    $vars[] = 'outfit';
     return $vars;
 }
 
@@ -29,7 +30,22 @@ add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
 add_filter( 'query_vars', 'wardrobe_query_vars' );
 
 
-/* Session management */
+/* Outfit builder */
+
+function wardrobe_outfit_post_ids() {
+    $ids = array();
+
+    foreach ( explode( ':', get_query_var( 'outfit', '' ) ) as $id ) {
+        if ( get_post( $id ) ) {
+            $ids[] = $id;
+        }
+    }
+
+    return $ids;
+}
+
+
+/* Nav session management */
 
 function wardrobe_session_nav_start() {
     ini_set( 'session.use_cookies', '0' );

@@ -2,9 +2,12 @@
     position: fixed;
     top: 0;
     z-index: 2;
-    padding: 0.125rem 0.5rem;
+    padding: 0px 0.5rem;
     width: 100%;
     background: #000;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
 }
 
 .masthead_shift {
@@ -12,15 +15,19 @@
 }
 
 .site-title {
-	display: inline-block;
+    float: left;
     font-size: 1rem;
-    line-height: 2rem;
 }
 
 .site-title a, .site-title a:link, .site-title a:visited, .site-title a:hover, 
 .site-title a:active {
     color: #fff;
     text-decoration: none;
+}
+
+.sidebar-button__button {
+    height: 3rem;
+    width: 3rem;
 }
 
 #masthead:after {
@@ -30,5 +37,5 @@
 }
 
 #content {
-    margin-top: 2.25rem;
+    margin-top: 3rem;
 }
