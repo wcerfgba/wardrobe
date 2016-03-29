@@ -36,13 +36,13 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src/php/',
-            src: [ '*.php' ],
+            src: [ '**/*.php' ],
             dest: 'dist/'
           },
           {
             expand: true,
             cwd: 'src/assets/',
-            src: [ '*' ],
+            src: [ '**/*' ],
             dest: 'dist/'
           }
         ]

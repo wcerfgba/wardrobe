@@ -38,41 +38,17 @@ function registerSidepage() {
     });
 }
 
-var sidepageCloseButtonHTML = 
-'<div class="buttons-left">' +
-'   <button class="sidepage-close-button">' +
-'   	<svg viewBox="0 0 8 8" class="icon">' +
-'   		<use xlink:href="#x" class="icon-use icon-close-sidepage"></use>' +
-'   	</svg>' +
-'   	<span class="button-text text-close-sidepage">Close</span>' +
-'   </button>' +
-'</div>';
-
 function loadSidepage(postLink) {
-    $.get($(postLink).attr("href"), function (data) {
-        // Build data.
-        data = $(data);
-        
-        // Extract header and content.
-        var header = $("#masthead", data);
-        var content = $("article", data);
-
-        // Mangle header.
-        header.removeAttr("id")
-              .removeClass()
-              .addClass("sidepage-header");
-        $(".site-title", header).replaceWith(sidepageCloseButtonHTML);
-        $(".sidebar-button", header).remove();
-        $(".icon_big", header).attr("class", "icon");
+    $.get(buildSubpageURL($(postLink).attr("href")), function (data) {
+        // Build subpage.
+        var subpage = $(data);
         
         // Clear currently active post link, if any.
         var activePostLink = "#" + $("#sidepage article").attr("id") + "-link";
         $(activePostLink).removeClass("post-link_active");
 
-        // Insert header and content into sidepage.
-        $("#sidepage").html("")
-                      .append(header)
-                      .append(content);
+        // Insert subpage into sidepage.
+        $("#sidepage").html(subpage);
 
         // Highlight active post.
         if (! $(postLink).hasClass("post-link_active")) {
@@ -98,6 +74,14 @@ function loadSidepage(postLink) {
         $(".nav-links__prev-link").click(sidepageNavButtonHandler);
         $(".nav-links__next-link").click(sidepageNavButtonHandler);
     });
+}
+
+function buildSubpageURL(url) {
+    if (/[?&][^?&=]+=[^?&=]+$/.test(url)) {
+        return url + "&subpage=true";
+    } else {
+        return url + "?subpage=true";
+    }
 }
 
 function sidepageNavButtonHandler(event) {

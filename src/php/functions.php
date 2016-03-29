@@ -35,7 +35,7 @@ function wardrobe_outfit_init() {
 }
 
 function wardrobe_query_vars( $vars ) {
-    $vars[] = 'sidepage';
+    $vars[] = 'subpage';
     $vars[] = 'nav_position';
     $vars[] = 'outfit';
     return $vars;

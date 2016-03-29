@@ -4,3 +4,8 @@
     flex-direction: row;
     -webkit-flex-direction: row;
 }
+
+.flex-subpage {
+    flex: 1;
+    -webkit-flex: 1;
+}
