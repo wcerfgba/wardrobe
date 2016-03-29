@@ -35,9 +35,9 @@ function wardrobe_outfit_init() {
 }
 
 function wardrobe_query_vars( $vars ) {
-    $vars[] = 'subpage';
-    $vars[] = 'nav_position';
-    $vars[] = 'outfit';
+    $vars[] = 'subpage';        // true if requesting subpage via singular.php
+    $vars[] = 'navigation';     // Session ID for navigation.
+    $vars[] = 'outfit';         // CSV of post IDs in current outfit.
     return $vars;
 }
 
@@ -65,101 +65,60 @@ function wardrobe_outfit_post_ids() {
 }
 
 
-/* Nav session management */
+/* Navigation */
 
-function wardrobe_session_nav_start() {
+function wardrobe_nav_start() {
     ini_set( 'session.use_cookies', '0' );
     ini_set( 'session.use_only_cookies', '0' );
     ini_set( 'session.use_trans_sid', '0' );
     ini_set( 'session.cache_limiter', '' );
-    session_name( 'nav_session' );
+    session_name( 'navigation' );
     session_start();
 }
 
-function wardrobe_session_nav_set( $category_posts ) {
-    $_SESSION['category_posts'] = array();
+function wardrobe_nav_array( $new_array = null ) {
+    if ( $new_array || ! array_key_exists( 'array', $_SESSION ) ) {
+        $_SESSION['array'] = array();
+    }
 
-    foreach ( $category_posts as $cat => $posts ) {
-        $_SESSION['category_posts']["$cat"] = array();
-
-        foreach ( $posts as $post ) {
-            $_SESSION['category_posts']["$cat"][] = $post->ID;
+    if ( $new_array ) {
+        foreach ( $new_array as $post ) {
+            $_SESSION['array'][] = $post->ID;
         }
+    } else {
+        return $_SESSION['array'];
     }
 }
 
-function wardrobe_session_nav_link_prev_attrs() {
-    $queryvar = get_query_var( 'nav_position', '');
-
-    if ( $queryvar ) {
-        $position = explode( ':', $queryvar );
-        $cat = $position[0];
-        $post = intval( $position[1] );
-
-        if ( array_key_exists( $cat, $_SESSION['category_posts'] ) &&
-             array_key_exists( $post, $_SESSION['category_posts'][$cat] ) ) {
-            if ( 0 < $post ) {
-                echo 'href="' .
-                        wardrobe_session_nav_permalink( $cat, $post - 1, 
-                            $_SESSION['category_posts'][$cat][$post - 1] ) .
-                    '" post-id="' .
-                        $_SESSION['category_posts'][$cat][$post - 1] .
-                    '"';
-                return true;
-            } else {
-                $idx = count( $_SESSION['category_posts'][$cat] ) - 1;
-                echo 'href="' .
-                        wardrobe_session_nav_permalink( $cat, $idx, 
-                            $_SESSION['category_posts'][$cat][$idx] ) .
-                    '" post-id="' .
-                        $_SESSION['category_posts'][$cat][$idx] .
-                    '"';
-                return true;
-            }
-        }
-    }
-
-    return false;
+function wardrobe_nav_array_pos( $id ) {
+    return array_search( $id, wardrobe_nav_array() );
 }
 
-function wardrobe_session_nav_link_next_attrs() {
-    $queryvar = get_query_var( 'nav_position', '');
-
-    if ( $queryvar ) {
-        $position = explode( ':', $queryvar );
-        $cat = $position[0];
-        $post = intval( $position[1] );
-
-        if ( array_key_exists( $cat, $_SESSION['category_posts'] ) &&
-             array_key_exists( $post, $_SESSION['category_posts'][$cat] ) ) {
-            if ( $post < count( $_SESSION['category_posts'][$cat] ) - 1) {
-                echo 'href="' .
-                        wardrobe_session_nav_permalink( $cat, $post + 1, 
-                            $_SESSION['category_posts'][$cat][$post + 1] ) .
-                    '" post-id="' .
-                        $_SESSION['category_posts'][$cat][$post + 1] .
-                    '"';
-                return true;
-            } else {
-                echo 'href="' .
-                        wardrobe_session_nav_permalink( $cat, 0, 
-                            $_SESSION['category_posts'][$cat][0] ) .
-                    '" post-id="' .
-                        $_SESSION['category_posts'][$cat][0] .
-                    '"';
-                return true;
-            }
-        }
-    }
-
-    return false;
-}
-
-function wardrobe_session_nav_permalink( $cat_id, $post_idx, $post = 0 ) {
+function wardrobe_nav_permalink( $post = 0 ) {
     return esc_url( add_query_arg( array (
-                                    'nav_position'  =>  "$cat_id:$post_idx",
-                                    'nav_session'   =>  session_id()
-                                ),
-                                get_permalink( $post ) ) );
+                                        'navigation'   =>  session_id()
+                                    ),
+                                    get_permalink( $post ) ) );
 }
+
+function wardrobe_nav_permalink_prev( $id ) {
+    $pos = wardrobe_nav_array_pos( $id );
+
+    if ( 0 < $pos ) {
+        return wardrobe_nav_permalink( wardrobe_nav_array()[$pos - 1] );
+    } else {
+        return wardrobe_nav_permalink( end( wardrobe_nav_array() ) );
+    }
+}
+
+function wardrobe_nav_permalink_next( $id ) {
+    $pos = wardrobe_nav_array_pos( $id );
+
+    if ( $pos < count( wardrobe_nav_array() ) - 1 ) {
+        return wardrobe_nav_permalink( wardrobe_nav_array()[$pos + 1] );
+    } else {
+        return wardrobe_nav_permalink( wardrobe_nav_array()[0] );
+    }
+}
+
 ?>

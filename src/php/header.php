@@ -48,9 +48,9 @@
                     </button>
                 </div>
             <?php endif; ?>
-            <?php if ( get_query_var( 'nav_position', false ) ) : wardrobe_session_nav_start(); ?>
+            <?php if ( get_query_var( 'navigation', false ) && is_single() ) : wardrobe_nav_start(); ?>
                 <div class="nav-links buttons-right">
-                    <a class="nav-links__prev-link button-link" <?php wardrobe_session_nav_link_prev_attrs(); ?>>
+                    <a class="nav-links__prev-link button-link" href="<?php echo wardrobe_nav_permalink_prev( $post->ID ); ?>">
                         <svg viewBox="0 0 8 8" class="icon_big">
                             <use xlink:href="#chevron-left" class="icon-use icon-nav-prev"></use>
                         </svg>
@@ -58,7 +58,7 @@
                             <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
                         </span>
                     </a>
-                    <a class="nav-links__next-link button-link" <?php echo wardrobe_session_nav_link_next_attrs(); ?>>
+                    <a class="nav-links__next-link button-link" href="<?php echo wardrobe_nav_permalink_next( $post->ID ); ?>">
                         <svg viewBox="0 0 8 8" class="icon_big">
                             <use xlink:href="#chevron-right" class="icon-use icon-nav-next"></use>
                         </svg>
