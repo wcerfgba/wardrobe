@@ -27,34 +27,22 @@ function registerSidepage() {
 
         event.preventDefault(); // Don't load the link.
 
-        // Clear currently active post link, if any.
-        if ($("#sidepage").css("display") !== "none") {
-            var activePostLink = "#" + $("#sidepage article").attr("id") +
-                                 "-link";
-            $(activePostLink).removeClass("post-link_active");
-        }
-
-        loadSidepage(this);
+        loadSidepage($(this).attr("href"));
     });
 }
 
-function loadSidepage(postLink) {
-    $.get(buildSubpageURL($(postLink).attr("href")), function (data) {
+function loadSidepage(url) {
+    $.get(buildSubpageURL(url), function (data) {
         // Build subpage.
         var subpage = $(data);
-        
-        // Clear currently active post link, if any.
-        var activePostLink = "#" + $("#sidepage article").attr("id") + "-link";
-        $(activePostLink).removeClass("post-link_active");
+
+        clearActivePostLink();        
 
         // Insert subpage into sidepage.
         $("#sidepage").html(subpage);
 
-        // Highlight active post.
-        if (! $(postLink).hasClass("post-link_active")) {
-            $(postLink).addClass("post-link_active");
-        }
-
+        setActivePostLink();
+        
         // Display sidepage if hidden.
         if ($("#sidepage").css("display") === "none") {
             $("#sidepage").removeAttr("style");
@@ -64,10 +52,12 @@ function loadSidepage(postLink) {
 
         // Bind button listeners.
         $(".sidepage-close-button").click(function () {
-            $(postLink).removeClass("post-link_active");
+            clearActivePostLink();
+
             $("#sidepage").animate({ width: "0%" }, function () {
                 $("#sidepage").attr("style", "display: none;");
             });
+
             $("#main").animate({ width: "100%" });
         });
         
@@ -84,9 +74,18 @@ function buildSubpageURL(url) {
     }
 }
 
+function clearActivePostLink() {
+        var activePostLink = "#" + $("#sidepage article").attr("id") + "-link";
+        $(activePostLink).removeClass("post-link_active");
+}
+
+function setActivePostLink() {
+        var activePostLink = "#" + $("#sidepage article").attr("id") + "-link";
+        $(activePostLink).addClass("post-link_active");
+}
+
 function sidepageNavButtonHandler(event) {
     event.preventDefault();
 
-    var postLink = $("#post-" + $(this).attr("post-id") + "-link");
-    loadSidepage(postLink);
+    loadSidepage($(this).attr("href"));
 }
