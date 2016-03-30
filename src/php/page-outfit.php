@@ -3,7 +3,7 @@
     <main id="main" class="site-main" role="main">
         <div class="flex-page">
         <?php
-        foreach ( explode( ':', get_query_var( 'outfit', '' ) ) as $id ) :
+        foreach ( wardrobe_outfit_ids() as $id ) :
             query_posts( array(
                             'p'         =>  $id,
                             'subpage'   =>  'true' ) );

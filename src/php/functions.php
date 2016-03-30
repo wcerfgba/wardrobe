@@ -50,9 +50,9 @@ add_action( 'init', 'wardrobe_outfit_init' );
 add_filter( 'query_vars', 'wardrobe_query_vars' );
 
 
-/* Outfit builder */
+/* Outfits */
 
-function wardrobe_outfit_post_ids() {
+function wardrobe_outfit_ids() {
     $ids = array();
 
     foreach ( explode( ':', get_query_var( 'outfit', '' ) ) as $id ) {
@@ -107,7 +107,7 @@ function wardrobe_nav_permalink_prev( $id ) {
     if ( 0 < $pos ) {
         return wardrobe_nav_permalink( wardrobe_nav_array()[$pos - 1] );
     } else {
-        return wardrobe_nav_permalink( end( wardrobe_nav_array() ) );
+        return wardrobe_nav_permalink( wardrobe_nav_array()[count ( wardrobe_nav_array() ) - 1] );
     }
 }
 
