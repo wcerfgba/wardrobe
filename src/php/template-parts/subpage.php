@@ -9,9 +9,13 @@
         </span>
        </button>
     </div>
-    <?php if ( get_query_var( 'navigation', false ) ) : wardrobe_nav_start(); ?>
+    <?php if ( get_query_var( 'navigation', false ) ) : wardrobe_nav_start( get_query_var( 'navigation' ) );  ?>
     <div class="nav-links buttons-right">
-        <a class="nav-links__prev-link button-link" href="<?php echo wardrobe_nav_permalink_prev( $post->ID ); ?>">
+        <?php if ( ! is_null ( get_query_var( 'outfit_position', null ) ) ) : ?>
+        <a class="nav-links__prev-link button-link" href="<?php echo wardrobe_outfit_prev_permalink( get_query_var( 'outfit_position' ) ); ?>">
+        <?php else : ?>
+        <a class="nav-links__prev-link button-link" href="<?php echo wardrobe_nav_permalink( wardrobe_nav_prev( $post->ID ) ); ?>">
+        <?php endif; ?>
             <svg viewBox="0 0 8 8" class="icon">
                 <use xlink:href="#chevron-left" class="icon-use icon-nav-prev"></use>
             </svg>
@@ -19,7 +23,11 @@
                 <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
             </span>
         </a>
-        <a class="nav-links__next-link button-link" href="<?php echo wardrobe_nav_permalink_next( $post->ID ); ?>">
+        <?php if ( ! is_null ( get_query_var( 'outfit_position', null ) ) ) : ?>
+        <a class="nav-links__next-link button-link" href="<?php echo wardrobe_outfit_next_permalink( get_query_var( 'outfit_position' ) ); ?>">
+        <?php else : ?>
+        <a class="nav-links__next-link button-link" href="<?php echo wardrobe_nav_permalink( wardrobe_nav_next( $post->ID ) ); ?>">
+        <?php endif; ?>
             <svg viewBox="0 0 8 8" class="icon">
                 <use xlink:href="#chevron-right" class="icon-use icon-nav-next"></use>
             </svg>

@@ -19,7 +19,8 @@
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
             <?php if ( get_query_var( 'outfit', false ) ) : ?>
                 <div id="outfit-bar" class="outfit-bar">
-                    <?php foreach ( wardrobe_outfit_post_ids() as $id ) : ?>
+                    <a href="<?php echo wardrobe_outfit_view_permalink(); ?>">
+                    <?php foreach ( wardrobe_outfit_ids() as $id ) : ?>
                     <article id="post-<?php echo $id; ?>" <?php post_class( 'outfit-post', $id ); ?>>
                         <div id="post-<?php echo $id; ?>__thumbnail" class="outfit-post__thumbnail">
                         <?php echo get_the_post_thumbnail( $id, 'thumbnail' ); ?>
@@ -34,6 +35,7 @@
                             <?php esc_html_e( 'Expand outfit', 'wardrobe' ); ?>
                         </span>
                     </div>
+                    </a>
                 </div>
             <?php endif; ?>
             <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>

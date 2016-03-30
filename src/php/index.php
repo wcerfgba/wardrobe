@@ -36,6 +36,9 @@
                     setup_postdata( $post );
                 ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'thumbnail-post' ); ?>>
+                        <a id="post-<?php the_ID(); ?>-outfit-add-link" class="outfit-add-link" href="<?php echo wardrobe_outfit_add_permalink( get_the_ID() ); ?>">
+                            add
+                        </a>
                         <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo wardrobe_nav_permalink(); ?>" post-title="<?php the_title(); ?>">
                             <div id="post-<?php the_ID(); ?>__thumbnail" class="thumbnail-post__thumbnail">
                             <?php the_post_thumbnail(); ?>

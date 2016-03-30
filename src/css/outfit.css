@@ -24,3 +24,8 @@
 .outfit-expand-button__icon {
     margin: 1rem;
 }
+
+.outfit-add-link {
+    color: #000;
+    background: #fff;
+}
