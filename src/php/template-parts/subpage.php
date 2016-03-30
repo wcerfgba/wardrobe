@@ -1,13 +1,24 @@
 <header class="subpage-bar">
     <div class="buttons-left">
-       <button class="sidepage-close-button">
-        <svg viewBox="0 0 8 8" class="icon">
-            <use xlink:href="#x" class="icon-use icon-close-sidepage"></use>
-        </svg>
-        <span class="button-text text-close-sidepage">
-                <?php esc_html_e( 'Close', 'wardrobe' ); ?>
-        </span>
-       </button>
+        <?php if ( ! is_null ( get_query_var( 'outfit_position', null ) ) ) : ?>
+        <a class="outfit-remove-link button-link" href="<?php echo wardrobe_outfit_remove_permalink( get_query_var( 'outfit_position' ) ); ?>">
+            <svg viewBox="0 0 8 8" class="icon">
+                <use xlink:href="#x" class="icon-use icon-close-sidepage"></use>
+            </svg>
+            <span class="link-text text-outfit-remove">
+                    <?php esc_html_e( 'Remove from outfit', 'wardrobe' ); ?>
+            </span>
+        </a>
+        <?php else : ?>
+        <button class="sidepage-close-button">
+            <svg viewBox="0 0 8 8" class="icon">
+                <use xlink:href="#x" class="icon-use icon-close-sidepage"></use>
+            </svg>
+            <span class="button-text text-close-sidepage">
+                    <?php esc_html_e( 'Close', 'wardrobe' ); ?>
+            </span>
+        </button>
+        <?php endif; ?>
     </div>
     <?php if ( get_query_var( 'navigation', false ) ) : wardrobe_nav_start( get_query_var( 'navigation' ) );  ?>
     <div class="nav-links buttons-right">

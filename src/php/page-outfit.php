@@ -13,7 +13,7 @@
                     'outfit_navs'       =>  get_query_var( 'outfit_navs' ) ) );
         
             while ( have_posts() ) : the_post(); ?>
-            <div class="flex-subpage">
+            <div class="flex-subpage outfit-subpage">
             <?php get_template_part( 'template-parts/subpage' ); ?>
             </div>
         <?php

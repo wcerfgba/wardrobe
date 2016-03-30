@@ -52,7 +52,7 @@
             <?php endif; ?>
             <?php if ( get_query_var( 'navigation', false ) && is_single() ) : wardrobe_nav_start(); ?>
                 <div class="nav-links buttons-right">
-                    <a class="nav-links__prev-link button-link" href="<?php echo wardrobe_nav_permalink_prev( $post->ID ); ?>">
+                    <a class="nav-links__prev-link button-link" href="<?php echo wardrobe_nav_permalink( wardrobe_nav_prev( $post->ID ) ); ?>">
                         <svg viewBox="0 0 8 8" class="icon_big">
                             <use xlink:href="#chevron-left" class="icon-use icon-nav-prev"></use>
                         </svg>
@@ -60,7 +60,7 @@
                             <?php esc_html_e( 'Previous', 'wardrobe' ); ?>
                         </span>
                     </a>
-                    <a class="nav-links__next-link button-link" href="<?php echo wardrobe_nav_permalink_next( $post->ID ); ?>">
+                    <a class="nav-links__next-link button-link" href="<?php echo wardrobe_nav_permalink( wardrobe_nav_next( $post->ID ) ); ?>">
                         <svg viewBox="0 0 8 8" class="icon_big">
                             <use xlink:href="#chevron-right" class="icon-use icon-nav-next"></use>
                         </svg>

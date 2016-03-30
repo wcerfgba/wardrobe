@@ -26,6 +26,16 @@
 }
 
 .outfit-add-link {
-    color: #000;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 1;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+}
+
+.outfit-subpage {
+    border: 1px solid #222;
 }

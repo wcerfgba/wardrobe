@@ -37,7 +37,12 @@
                 ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'thumbnail-post' ); ?>>
                         <a id="post-<?php the_ID(); ?>-outfit-add-link" class="outfit-add-link" href="<?php echo wardrobe_outfit_add_permalink( get_the_ID() ); ?>">
-                            add
+                            <svg viewBox="0 0 8 8" class="icon">
+                                <use xlink:href="#plus" class="icon-use icon-plus"></use>
+                            </svg>
+                            <span class="link__text text-menu">
+                                <?php esc_html_e( 'Add to outfit', 'wardrobe' ); ?>
+                            </span>
                         </a>
                         <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo wardrobe_nav_permalink(); ?>" post-title="<?php the_title(); ?>">
                             <div id="post-<?php the_ID(); ?>__thumbnail" class="thumbnail-post__thumbnail">

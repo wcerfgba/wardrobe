@@ -26,7 +26,7 @@
                 <div id="category-<?php echo $cat_id; ?>-name" class="category-name">
                     <h2 class="category-name__heading"><?php echo get_cat_name( $cat_id ); ?></h2>
                 </div>
-                <div id="category-<?php echo $cat_id; ?>-content" class="category-content">
+                <div id="category-<?php echo $cat_id; ?>-content" class="category-content search-category-content">
                 <?php foreach ( $posts as $current_post ) :
                     /* Reinitialise post data for in-the-loop functions. */
                     global $post;
@@ -34,7 +34,15 @@
                     setup_postdata( $post );
                 ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'search-result' ); ?>>
-                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo wardrobe_nav_permalink(); ?>" post-title="<?php the_title(); ?>">
+                        <a id="post-<?php the_ID(); ?>-outfit-add-link" class="outfit-add-link" href="<?php echo wardrobe_outfit_add_permalink( get_the_ID() ); ?>">
+                            <svg viewBox="0 0 8 8" class="icon">
+                                <use xlink:href="#plus" class="icon-use icon-plus"></use>
+                            </svg>
+                            <span class="link__text text-menu">
+                                <?php esc_html_e( 'Add to outfit', 'wardrobe' ); ?>
+                            </span>
+                        </a>
+                        <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo wardrobe_nav_permalink(); ?>">
                             <div id="post-<?php the_ID(); ?>__thumbnail" class="search-result__thumbnail">
                                 <?php echo the_post_thumbnail(); ?>
                             </div>

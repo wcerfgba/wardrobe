@@ -25,7 +25,6 @@
         height: 10rem;
         margin-top: 0;
         margin-bottom: 0.666rem;
-        margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
     
@@ -38,6 +37,10 @@
     .search-result-header {
         display: inline-block;
         vertical-align: top;
+    }
+
+    .search-category-content {
+        padding-left: 0.5rem;
     }
 }
 
