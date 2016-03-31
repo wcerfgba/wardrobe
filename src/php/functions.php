@@ -43,6 +43,13 @@ function wardrobe_query_vars( $vars ) {
     return $vars;
 }
 
+function wardrobe_permalink_filter($url) {
+    return add_query_arg( array (
+                        'outfit'	    =>	get_query_var( 'outfit' ),
+                        'outfit_navs'   =>  get_query_var( 'outfit_navs' ) ),
+                    $url );
+}
+
 add_action( 'wp_enqueue_scripts', 'wardrobe_enqueue_scripts' );
 add_action( 'widgets_init', 'wardrobe_widgets_init' );
 add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
@@ -50,6 +57,7 @@ add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
 add_action( 'init', 'wardrobe_outfit_init' );
 
 add_filter( 'query_vars', 'wardrobe_query_vars' );
+add_filter( 'the_permalink', 'wardrobe_permalink_filter' );
 
 
 /* Outfits */

@@ -16,7 +16,7 @@
         <?php else : ?>
             <header id="masthead" class="site-header" role="banner">
         <?php endif; ?>
-                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                <h1 class="site-title"><a href="<?php echo wardrobe_permalink_filter( esc_url( site_url( '/' ) ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
             <?php if ( get_query_var( 'outfit', false ) ) : ?>
                 <div id="outfit-bar" class="outfit-bar">
                     <a href="<?php echo wardrobe_outfit_view_permalink(); ?>">
