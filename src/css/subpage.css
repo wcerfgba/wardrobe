@@ -8,14 +8,14 @@
     width: 100%;
     min-height: 100%;
     margin: 0 auto;
-    padding: 1rem 1rem;
+    padding: 1rem 8.333%;
     background: #eee;
     color: #000;
 }
 
 .singular-subpage .singular-header__thumbnail {
     margin-top: -1rem;     /* Cancel padding at edges. */
-    margin-left: -1rem;
-    margin-right: -1rem;
+    margin-left: -9.666%;
+    margin-right: -9.666%;
     margin-bottom: 0.666rem;
 }

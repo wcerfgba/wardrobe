@@ -39,6 +39,7 @@
 
 .outfit-subpage {
     border: 1px solid #222;
+    background: #eee;
 }
 
 @media (min-width: 600px) {

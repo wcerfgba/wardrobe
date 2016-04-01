@@ -1,11 +1,21 @@
 .flex-page {
     display: flex;
     display: -webkit-flex;
-    flex-direction: row;
+    flex-direction: column;
     -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
 }
 
 .flex-subpage {
     flex: 1;
     -webkit-flex: 1;
+    max-width: 36rem;
+    min-height: 100%;
+}
+
+@media (min-width: 600px) {
+    .flex-page {
+        flex-direction: row;
+    }
 }
