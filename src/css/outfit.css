@@ -1,5 +1,5 @@
 .outfit-bar {
-    display: inline-block;
+    display: none;
 }
 
 .outfit-post {
@@ -26,6 +26,7 @@
 }
 
 .outfit-add-link {
+    display: none;
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
     z-index: 1;
@@ -38,4 +39,14 @@
 
 .outfit-subpage {
     border: 1px solid #222;
+}
+
+@media (min-width: 600px) {
+    .outfit-bar {
+        display: inline-block;
+    }
+
+    .outfit-add-link {
+        display: block;
+    }
 }

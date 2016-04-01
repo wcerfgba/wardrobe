@@ -5,7 +5,7 @@
             <svg viewBox="0 0 8 8" class="icon">
                 <use xlink:href="#x" class="icon-use icon-close-sidepage"></use>
             </svg>
-            <span class="link-text text-outfit-remove">
+            <span class="link__text text-outfit-remove">
                     <?php esc_html_e( 'Remove from outfit', 'wardrobe' ); ?>
             </span>
         </a>
@@ -14,7 +14,7 @@
             <svg viewBox="0 0 8 8" class="icon">
                 <use xlink:href="#x" class="icon-use icon-close-sidepage"></use>
             </svg>
-            <span class="button-text text-close-sidepage">
+            <span class="button__text text-close-sidepage">
                     <?php esc_html_e( 'Close', 'wardrobe' ); ?>
             </span>
         </button>
@@ -49,4 +49,6 @@
     </div>
     <?php session_write_close(); endif; ?>
 </header>
+<div class="singular-subpage">
 <?php get_template_part( 'template-parts/content' ); ?>
+</div>

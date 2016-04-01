@@ -3,3 +3,19 @@
     height: 2rem;
     background: #000;
 }
+
+.singular-subpage {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    background: #eee;
+    color: #000;
+}
+
+.singular-subpage .singular-header__thumbnail {
+    margin-top: -1rem;     /* Cancel padding at edges. */
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-bottom: 0.666rem;
+}

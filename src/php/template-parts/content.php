@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'singular' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="singular-header">
         <div id="post-<?php the_ID(); ?>__thumbnail" class="singular-header__thumbnail">
             <?php the_post_thumbnail( 'full' ); ?>
