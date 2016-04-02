@@ -42,14 +42,14 @@ function wardrobe_query_vars( $vars ) {
     $vars[] = 'outfit_position'; // Position of post in outfit.
     return $vars;
 }
-
+/*
 function wardrobe_permalink_filter($url) {
     return add_query_arg( array (
                         'outfit'	    =>	get_query_var( 'outfit' ),
                         'outfit_navs'   =>  get_query_var( 'outfit_navs' ) ),
                     $url );
 }
-
+*/
 add_action( 'wp_enqueue_scripts', 'wardrobe_enqueue_scripts' );
 add_action( 'widgets_init', 'wardrobe_widgets_init' );
 add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
@@ -57,7 +57,66 @@ add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
 add_action( 'init', 'wardrobe_outfit_init' );
 
 add_filter( 'query_vars', 'wardrobe_query_vars' );
-add_filter( 'the_permalink', 'wardrobe_permalink_filter' );
+//add_filter( 'the_permalink', 'wardrobe_permalink_filter' );
+
+
+function wardrobe_output_callback( $buffer ) {
+    // Add outfit parameters to absolute URLs.
+    $buf = preg_replace_callback( 
+        '#(href=["\'])(' . preg_quote( site_url(), '#' ) . '[^"\']+)(["\'])#',
+        function ( $matches ) {
+            // Don't mangle feed links.
+            if ( strpos( $matches[2], 'feed=' ) !== false ) {
+                return $matches[0];
+            }
+
+            // Break around anchor.
+            $url = explode( '#', $matches[2] );
+            if ( count( $url ) == 2 ) {
+                $matches[2] = $url[0];
+                $matches[3] = '#' . $url[1] . $matches[3];
+            }
+
+            // Test for existing parameters.
+            if ( strpos( $matches[2], '?' ) === false ) {
+                return $matches[1] . $matches[2] .
+                        '?outfit=' . get_query_var( 'outfit' ) . 
+                        '&outfit_navs=' . get_query_var( 'outfit_navs' ) . 
+                        $matches[3];
+            } else {
+                return $matches[1] . $matches[2] .
+                        '&outfit=' . get_query_var( 'outfit' ) .
+                        '&outfit_navs=' . get_query_var( 'outfit_navs' ) . 
+                        $matches[3];
+            }
+        },
+        $buffer );
+
+    // Add outfit parameters as hidden inputs on forms with absolute actions.
+    $buf = preg_replace_callback(
+        '#action="' . preg_quote( site_url(), '#' ) . '[^"]+">#',
+        function ( $matches ) {
+            return $matches[0] .
+                    '<input type="hidden" name="outfit" value="' .
+                        get_query_var( 'outfit' ) . '" />' .
+                    '<input type="hidden" name="outfit_navs" value="' .
+                        get_query_var( 'outfit_navs' ) . '" />';
+        },
+        $buf );
+
+    return $buf;
+}
+
+function wardrobe_ob_start() {
+    ob_start( 'wardrobe_output_callback' );
+}
+
+function wardrobe_ob_end() {
+    ob_end_flush();
+}
+
+add_action( 'wp_head', 'wardrobe_ob_start' );
+add_action( 'wp_footer', 'wardrobe_ob_end' );
 
 
 /* Outfits */
@@ -114,16 +173,20 @@ function wardrobe_outfit_remove_permalink( $pos ) {
     unset( $outfit[$pos] );
     unset( $outfit_navs[$pos] );
 
+    $outfit = array_values( $outfit );
+    $outfit_navs = array_values( $outfit_navs );
+
     return esc_url( add_query_arg( array(
                         'outfit'        =>  implode( ':', $outfit ),
                         'outfit_navs'   =>  implode( ':', $outfit_navs ) ) ) );
 }
 
 function wardrobe_outfit_view_permalink() {
-    return esc_url( add_query_arg( array(
-                        'outfit'        =>  get_query_var( 'outfit' ),
-                        'outfit_navs'   =>  get_query_var( 'outfit_navs' ) ),
-                        get_permalink( get_page_by_title( 'outfit' ) ) ) );
+ //   return esc_url( add_query_arg( array(
+ //                       'outfit'        =>  get_query_var( 'outfit' ),
+ //                       'outfit_navs'   =>  get_query_var( 'outfit_navs' ) ),
+ //                       get_permalink( get_page_by_title( 'outfit' ) ) ) );
+    return get_permalink( get_page_by_title( 'outfit' ) );
 }
 
 /* Navigation */
