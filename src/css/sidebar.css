@@ -10,7 +10,7 @@
 
 .sidebar > li {
     display: block;
-    margin: 0.666rem;
+    margin: 1rem;
 }
 
 .sidebar a, .sidebar a:link, .sidebar a:visited, .sidebar a:hover, 

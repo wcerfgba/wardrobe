@@ -17,6 +17,7 @@
 .site-title {
     float: left;
     font-size: 1rem;
+    line-height: 3rem;
 }
 
 .site-title a, .site-title a:link, .site-title a:visited, .site-title a:hover, 
