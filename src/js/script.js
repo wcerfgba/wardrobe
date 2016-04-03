@@ -10,8 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
 function registerSidebarToggle() {
     var button = $(".sidebar-button__button");
     var sidebar = $("#secondary");
+
+    // Set up JS sidebar.
+    sidebar.addClass("sidebar_js");
     
-    button.click(function () {
+    button.click(function (event) {
+        event.preventDefault();
         sidebar.fadeToggle();
     });
 }

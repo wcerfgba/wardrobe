@@ -40,14 +40,14 @@
             <?php endif; ?>
             <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
                 <div class="sidebar-button buttons-right">
-                    <button class="sidebar-button__button" aria-controls="secondary" aria-expanded="false">
+                    <a class="sidebar-button__button button-link" aria-controls="secondary" aria-expanded="false" href="#secondary">
                         <svg viewBox="0 1 8 8" class="icon_big">
                             <use xlink:href="#menu" class="icon-use icon-menu"></use>
                         </svg>
                         <span class="button__text text-menu">
                             <?php esc_html_e( 'Menu', 'wardrobe' ); ?>
                         </span>
-                    </button>
+                    </a>
                 </div>
             <?php endif; ?>
             <?php if ( get_query_var( 'navigation', false ) && is_single() ) : wardrobe_nav_start(); ?>
@@ -71,9 +71,4 @@
                 </div>
             <?php session_write_close(); endif; ?>
             </header>
-        <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-            <aside id="secondary" class="sidebar widget-area" role="complementary">
-                <?php dynamic_sidebar( 'sidebar-1' ); ?>
-            </aside>
-        <?php endif; ?>
             <div id="content" class="site-content">
