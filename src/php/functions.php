@@ -70,25 +70,12 @@ function wardrobe_output_callback( $buffer ) {
                 return $matches[0];
             }
 
-            // Break around anchor.
-            $url = explode( '#', $matches[2] );
-            if ( count( $url ) == 2 ) {
-                $matches[2] = $url[0];
-                $matches[3] = '#' . $url[1] . $matches[3];
-            }
+            $url = esc_url( add_query_arg( array(
+                            'outfit'        =>  get_query_var( 'outfit', false ),
+                            'outfit_navs'   =>  get_query_var( 'outfit_navs', false ) ),
+                        $matches[2] ) );
 
-            // Test for existing parameters.
-            if ( strpos( $matches[2], '?' ) === false ) {
-                return $matches[1] . $matches[2] .
-                        '?outfit=' . get_query_var( 'outfit' ) . 
-                        '&outfit_navs=' . get_query_var( 'outfit_navs' ) . 
-                        $matches[3];
-            } else {
-                return $matches[1] . $matches[2] .
-                        '&outfit=' . get_query_var( 'outfit' ) .
-                        '&outfit_navs=' . get_query_var( 'outfit_navs' ) . 
-                        $matches[3];
-            }
+            return $matches[1] . $url . $matches[3];
         },
         $buffer );
 
@@ -224,10 +211,12 @@ function wardrobe_nav_array_pos( $id ) {
 }
 
 function wardrobe_nav_permalink( $post = 0 ) {
-    return esc_url( add_query_arg( array (
-                                        'navigation'   =>  session_id()
-                                    ),
-                                    get_permalink( $post ) ) );
+    // Don't escape this URL or it will encode the parameter ampersand as an
+    // entity -- odd interaction with wardrobe_output_callback.
+    return add_query_arg( array (
+                                    'navigation'   =>  session_id()
+                                ),
+                                get_permalink( $post ) );
 }
 
 function wardrobe_nav_prev( $id ) {

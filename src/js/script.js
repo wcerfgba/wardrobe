@@ -67,7 +67,7 @@ function loadSidepage(url) {
 }
 
 function buildSubpageURL(url) {
-    if (/[?&][^?&=]+=[^?&=]+$/.test(url)) {
+    if (/[?&]/.test(url)) {
         return url + "&subpage=true";
     } else {
         return url + "?subpage=true";
