@@ -11,16 +11,14 @@ body {
 }
 
 #primary {
-    background: #eee;
     overflow: hidden;
 }
 
 #main {
-    display: inline-block;
-    vertical-align: top;
+    float: left;
     width: 100%;
     background: #000;
-    padding-bottom: 100%; /* Stretch to page. */
+    padding-bottom: 100%;
     margin-bottom: -100%;
 }
 

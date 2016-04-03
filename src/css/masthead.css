@@ -1,7 +1,7 @@
 #masthead {
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 3;
     padding: 0px 0.5rem;
     width: 100%;
     background: #000;
