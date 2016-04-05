@@ -28,6 +28,11 @@ blockquote {
     padding-left: 1rem;
 }
 
+/* Required by theme checker. */
+.sticky {}
+.gallery-caption {}
+.bypostauthor {}
+
 .wp-post-image {
     object-fit: cover;
     width: 100%;

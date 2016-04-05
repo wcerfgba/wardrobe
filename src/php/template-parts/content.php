@@ -9,6 +9,16 @@
     <?php if ( 'post' === get_post_type() ) : ?>
         <div class="singular-header-meta">
             <span class="entry-date"><?php echo get_the_date(); ?></span>
+            <span class="entry-tags">Tags: 
+            <?php $tags = get_the_tags();
+             
+            if ( $tags ) :
+                foreach ( $tags as $tag ) :
+                    echo '<a class="tag-link" href="' . get_tag_link( $tag ) . 
+                            '">' . $tag->name . '</a>'; 
+                endforeach;
+            endif; ?>
+            </span>
         </div>
     <?php endif; ?>
     </header>

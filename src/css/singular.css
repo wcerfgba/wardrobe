@@ -32,7 +32,15 @@
 .singular-header-meta {
     font-variant: small-caps;
     text-align: center;
-    margin-bottom: 0.666rem;
+    margin-bottom: 1rem;
+}
+
+.singular-header-meta > span {
+    display: block;
+}
+
+.entry-date {
+	margin-bottom: 0.5rem;
 }
 
 .singular-content {
