@@ -7,10 +7,14 @@
 
 .search-result__thumbnail {
     width: 100%;
+    float: left;
+    margin-right: 0.666rem;
 }
 
 .search-result-header {
-    padding: 0.333rem;
+    margin-right: 0.666rem;
+    height: 100%;
+    overflow: hidden;
 }
 
 .search-result-header__meta {
@@ -31,12 +35,6 @@
     .search-result__thumbnail {
         width: 10rem;
         height: 10rem;
-        display: inline-block;
-    }
-
-    .search-result-header {
-        display: inline-block;
-        vertical-align: top;
     }
 
     .search-category-content {
