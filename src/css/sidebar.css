@@ -8,6 +8,7 @@
     right: 0;
     top: 0;
     bottom: -1px;
+    max-width: 25rem;
     z-index: 2;
     display: none; /* Hidden by default */
     background: rgba(0, 0, 0, 0.9) !important;
@@ -35,10 +36,4 @@
 .sidebar a:active {
     color: #ddd;
     text-decoration: none;
-}
-
-@media (max-width: 30rem) {
-    .sidebar {
-        width: 100%;
-    }
 }
