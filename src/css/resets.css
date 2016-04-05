@@ -8,6 +8,10 @@ input, textarea {
     background: #eee;
 }
 
+h2, h3 {
+	margin-top: 1rem;
+}
+
 p {
     margin: 0.5rem 0;
     text-align: justify;
@@ -55,4 +59,12 @@ blockquote {
 .wp-caption-text {
     font-size: small;
     text-align: center;
+}
+
+dd {
+    margin-left: 1rem;
+}
+
+td, th {
+	padding: 0.333rem;
 }
