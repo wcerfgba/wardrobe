@@ -38,3 +38,8 @@
 .singular-content {
     width: 100%;
 }
+
+.singular-content > h2, .singular-content > h3 {
+	margin-top: 1rem;
+}
+
