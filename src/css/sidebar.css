@@ -7,7 +7,6 @@
     position: absolute;
     right: 0;
     top: 0;
-    bottom: -1px;
     max-width: 25rem;
     z-index: 2;
     display: none; /* Hidden by default */

@@ -41,12 +41,8 @@
     padding: 0 1rem;
 }
 
-.comments-title {
-    margin-bottom: -2rem;
-}
-
 .comment {
-    padding-top: 3rem;
+    margin-bottom: 2rem;
 }
 
 .comment-respond {

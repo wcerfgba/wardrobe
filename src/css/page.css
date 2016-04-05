@@ -11,10 +11,6 @@ body {
     min-height: 100vh;
 }
 
-#primary {
-    overflow: hidden;
-}
-
 #main {
     float: left;
     width: 100%;
