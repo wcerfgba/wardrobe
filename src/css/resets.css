@@ -33,3 +33,26 @@ blockquote {
     width: 100%;
     height: 100%;
 }
+
+.alignleft {
+    float: left;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: 3rem;
+}
+
+.alignright {
+    float: right;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+}
+
+.aligncenter {
+    margin: 2rem auto;
+}
+
+.wp-caption-text {
+    font-size: small;
+    text-align: center;
+}
