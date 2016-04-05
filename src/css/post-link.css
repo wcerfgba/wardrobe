@@ -41,6 +41,14 @@ a.post-link:hover:before {
     opacity: 1;
 }
 
+h2.post-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
 a.post-link_active:after {
     content: "";
     position: absolute;

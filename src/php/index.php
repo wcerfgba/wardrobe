@@ -44,11 +44,19 @@
                                 <?php esc_html_e( 'Add to outfit', 'wardrobe' ); ?>
                             </span>
                         </a>
+                        <?php if ( has_post_thumbnail() ) : ?>
                         <a id="post-<?php the_ID(); ?>-link" class="post-link" href="<?php echo wardrobe_nav_permalink(); ?>" post-title="<?php the_title(); ?>">
                             <div id="post-<?php the_ID(); ?>__thumbnail" class="thumbnail-post__thumbnail">
                             <?php the_post_thumbnail(); ?>
                             </div>
                         </a>
+                        <?php else : ?>
+                        <a id="post-<?php the_ID(); ?>-link" class="post-link post-link_titled" href="<?php echo wardrobe_nav_permalink(); ?>">
+                            <div id="post-<?php the_ID(); ?>__thumbnail" class="thumbnail-post__thumbnail">
+                                <h2 class="post-title"><?php the_title(); ?></h2>
+                            </div>
+                        </a>
+                        <?php endif; ?>
                     </article>
                 <?php endforeach; ?>
                 </div>
