@@ -71,8 +71,8 @@ function wardrobe_output_callback( $buffer ) {
                 return $matches[0];
             }
 
-            $url = $matches[2];
-
+            $url = html_entity_decode( $matches[2] );
+            
             // Test for each query arg.
             if ( strpos( $url, 'outfit=' ) === false ) {
                 $url = add_query_arg( array(
@@ -86,7 +86,9 @@ function wardrobe_output_callback( $buffer ) {
                         $url );
             }
 
-            return $matches[1] . esc_url( $url ) . $matches[3];
+            $url = esc_url( $url );
+
+            return $matches[1] . $url . $matches[3];
         },
         $buffer );
 
