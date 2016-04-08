@@ -16,7 +16,15 @@ function registerSidebarToggle() {
     
     button.click(function (event) {
         event.preventDefault();
-        sidebar.fadeToggle();
+
+        if (sidebar.css("display") === "none") {
+            sidebar.fadeIn();
+            $("html, body").animate({
+                'scrollTop': 0
+            });
+        } else {
+            sidebar.fadeOut();
+        }
     });
 }
 
