@@ -8,7 +8,7 @@
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
         <?php wp_head(); ?>
     </head>
-    <body>
+    <body <?php body_class(); ?>>
         <?php include_once( 'icons.svg' ); ?>
         <div id="page" class="site">
         <?php if ( is_admin_bar_showing() ) : ?>

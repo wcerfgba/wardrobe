@@ -4,6 +4,7 @@ function wardrobe_enqueue_scripts() {
 	wp_enqueue_style( 'core', get_stylesheet_uri(), false ); 
 	
 	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'comment-reply' );
 	wp_enqueue_script( 'script', get_template_directory_uri() . '/wardrobe.min.js', false );
 }
 
@@ -12,6 +13,7 @@ function wardrobe_widgets_init() {
 }
 
 function wardrobe_after_setup_theme() {
+    add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 300, 300 );
 }
@@ -58,6 +60,11 @@ add_action( 'init', 'wardrobe_outfit_init' );
 
 add_filter( 'query_vars', 'wardrobe_query_vars' );
 //add_filter( 'the_permalink', 'wardrobe_permalink_filter' );
+
+
+if ( ! isset( $content_width ) ) {
+	$content_width = 576; // 36rem @ 16px for singular
+}
 
 
 function wardrobe_output_callback( $buffer ) {
