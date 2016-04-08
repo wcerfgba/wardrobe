@@ -19,7 +19,6 @@
                 
             /* Construct new nav session for each category. */
             wardrobe_nav_start();
-            session_regenerate_id();
             wardrobe_nav_array( $posts );
         ?>
             <div id="category-<?php echo $cat_id; ?>" class="category">

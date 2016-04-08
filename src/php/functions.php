@@ -14,13 +14,14 @@ function wardrobe_widgets_init() {
 
 function wardrobe_after_setup_theme() {
     add_theme_support( 'title-tag' );
+    add_theme_support( 'automatic-feed-links' );
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 300, 300 );
 }
 
 function wardrobe_outfit_init() {
-//    add_rewrite_rule( '^outfit/([0-9]+(?::[0-9]+)*)/?',
-//                      'index.php?pagename=outfit&outfit=$matches[1]', 'top' );
+    add_rewrite_rule( '^outfit/([0-9]+(?::[0-9]+)*)/?',
+                      'index.php?pagename=outfit&outfit=$matches[1]', 'top' );
 
     if ( ! get_page_by_title( 'outfit' ) ) {
         $_p = array();
@@ -44,14 +45,7 @@ function wardrobe_query_vars( $vars ) {
     $vars[] = 'outfit_position'; // Position of post in outfit.
     return $vars;
 }
-/*
-function wardrobe_permalink_filter($url) {
-    return add_query_arg( array (
-                        'outfit'	    =>	get_query_var( 'outfit' ),
-                        'outfit_navs'   =>  get_query_var( 'outfit_navs' ) ),
-                    $url );
-}
-*/
+
 add_action( 'wp_enqueue_scripts', 'wardrobe_enqueue_scripts' );
 add_action( 'widgets_init', 'wardrobe_widgets_init' );
 add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
@@ -59,7 +53,6 @@ add_action( 'after_setup_theme', 'wardrobe_after_setup_theme' );
 add_action( 'init', 'wardrobe_outfit_init' );
 
 add_filter( 'query_vars', 'wardrobe_query_vars' );
-//add_filter( 'the_permalink', 'wardrobe_permalink_filter' );
 
 
 if ( ! isset( $content_width ) ) {
@@ -193,17 +186,24 @@ function wardrobe_outfit_view_permalink() {
 /* Navigation */
 
 function wardrobe_nav_start( $session_id = null ) {
-    ini_set( 'session.use_cookies', '0' );
-    ini_set( 'session.use_only_cookies', '0' );
-    ini_set( 'session.use_trans_sid', '0' );
-    ini_set( 'session.cache_limiter', '' );
+//    ini_set( 'session.use_cookies', '0' );
+//    ini_set( 'session.use_only_cookies', '0' );
+//    ini_set( 'session.use_trans_sid', '0' );
+//    ini_set( 'session.cache_limiter', '' );
     session_name( 'navigation' );
 
     if ( $session_id ) {
         session_id( $session_id );
+    } else {
+        session_id( uniqid() );
     }
 
-    session_start();
+    @session_start( array( 
+            'use_cookies'       => '0',
+            'use_only_cookies'  => '0',
+            'use_trans_sid'     => '0',
+            'cache_limiter'     => ''
+        ) );
 }
 
 function wardrobe_nav_array( $new_array = null ) {
