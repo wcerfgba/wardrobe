@@ -130,7 +130,7 @@ function wardrobe_outfit_ids() {
     $ids = array();
 
     foreach ( explode( ':', get_query_var( 'outfit', '' ) ) as $id ) {
-        if ( get_post( $id ) ) {
+        if ( $id !== '' && get_post( $id ) ) {
             $ids[] = $id;
         }
     }
