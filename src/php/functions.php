@@ -17,8 +17,8 @@ function wardrobe_after_setup_theme() {
 }
 
 function wardrobe_outfit_init() {
-    add_rewrite_rule( '^outfit/([0-9]+(?::[0-9]+)*)/?',
-                      'index.php?pagename=outfit&outfit=$matches[1]', 'top' );
+//    add_rewrite_rule( '^outfit/([0-9]+(?::[0-9]+)*)/?',
+//                      'index.php?pagename=outfit&outfit=$matches[1]', 'top' );
 
     if ( ! get_page_by_title( 'outfit' ) ) {
         $_p = array();
@@ -66,16 +66,27 @@ function wardrobe_output_callback( $buffer ) {
         '#(href=["\'])(' . preg_quote( site_url(), '#' ) . '[^"\']+)(["\'])#',
         function ( $matches ) {
             // Don't mangle feed links.
-            if ( strpos( $matches[2], 'feed=' ) !== false ) {
+            if ( strpos( $matches[2], 'feed=' ) !== false ||
+                 strpos( $matches[2], '/feed/' ) !== false ) {
                 return $matches[0];
             }
 
-            $url = esc_url( add_query_arg( array(
-                            'outfit'        =>  get_query_var( 'outfit', false ),
-                            'outfit_navs'   =>  get_query_var( 'outfit_navs', false ) ),
-                        $matches[2] ) );
+            $url = $matches[2];
 
-            return $matches[1] . $url . $matches[3];
+            // Test for each query arg.
+            if ( strpos( $url, 'outfit=' ) === false ) {
+                $url = add_query_arg( array(
+                            'outfit'    =>  get_query_var( 'outfit', false ) ),
+                        $url );
+            }
+            
+            if ( strpos( $url, 'outfit_navs=' ) === false ) {
+                $url = add_query_arg( array(
+                            'outfit_navs'   =>  get_query_var( 'outfit_navs', false ) ),
+                        $url );
+            }
+
+            return $matches[1] . esc_url( $url ) . $matches[3];
         },
         $buffer );
 
@@ -169,10 +180,6 @@ function wardrobe_outfit_remove_permalink( $pos ) {
 }
 
 function wardrobe_outfit_view_permalink() {
- //   return esc_url( add_query_arg( array(
- //                       'outfit'        =>  get_query_var( 'outfit' ),
- //                       'outfit_navs'   =>  get_query_var( 'outfit_navs' ) ),
- //                       get_permalink( get_page_by_title( 'outfit' ) ) ) );
     return get_permalink( get_page_by_title( 'outfit' ) );
 }
 
@@ -211,12 +218,9 @@ function wardrobe_nav_array_pos( $id ) {
 }
 
 function wardrobe_nav_permalink( $post = 0 ) {
-    // Don't escape this URL or it will encode the parameter ampersand as an
-    // entity -- odd interaction with wardrobe_output_callback.
-    return add_query_arg( array (
-                                    'navigation'   =>  session_id()
-                                ),
-                                get_permalink( $post ) );
+    return esc_url( add_query_arg( array (
+                                    'navigation'   =>  session_id() ),
+                                get_permalink( $post ) ) );
 }
 
 function wardrobe_nav_prev( $id ) {

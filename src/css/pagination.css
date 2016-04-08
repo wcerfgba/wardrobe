@@ -1,0 +1,27 @@
+.pagination {
+    display: table;
+    width: 100%;
+    height: 2rem;
+    line-height: 1rem;
+    text-align: center;
+}
+
+.page-numbers {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.page-numbers:link, .page-numbers:visited, .page-numbers:hover {
+    background: #000;
+    color: #fff;
+}
+
+.page-numbers:active {
+    background: #fff;
+    color: #000;
+}
+
+.page-numbers.current {
+    background: #fff;
+    color: #000;
+}
